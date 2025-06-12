@@ -34,7 +34,7 @@ export function SchedulePageClient() {
       setIsAuthenticatedUser(authStatus);
       setIsAuthenticating(false);
       if (!authStatus) {
-        router.push('/'); // Redirect to home page if not authenticated
+        router.push('/login'); // Redirect to login page if not authenticated
       }
     };
     verifyAuth();

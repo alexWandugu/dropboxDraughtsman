@@ -1,0 +1,64 @@
+import Link from 'next/link';
+import { Logo } from '@/components/logo';
+import { footerNavItems, socialLinks } from '@/data/navigation';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Send } from 'lucide-react';
+
+export function Footer() {
+  return (
+    <footer className="bg-card border-t border-border/40">
+      <div className="container py-12 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div>
+            <Logo className="mb-4" />
+            <p className="text-sm text-muted-foreground">
+              Powering your electrical design expertise in Kenya through innovative training and expert consultation.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-headline font-semibold mb-4 text-primary">Quick Links</h3>
+            <ul className="space-y-2">
+              {footerNavItems.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-headline font-semibold mb-4 text-primary">Contact Us</h3>
+            <address className="text-sm text-muted-foreground not-italic space-y-1">
+              <p>123 Circuit Avenue, Nairobi, Kenya</p>
+              <p>Email: <a href="mailto:info@circuitflow.co.ke" className="hover:text-primary">info@circuitflow.co.ke</a></p>
+              <p>Phone: <a href="tel:+254700000000" className="hover:text-primary">+254 700 000 000</a></p>
+            </address>
+          </div>
+          <div>
+            <h3 className="text-lg font-headline font-semibold mb-4 text-primary">Newsletter</h3>
+            <p className="text-sm text-muted-foreground mb-2">Stay updated with our latest news and offers.</p>
+            <form className="flex gap-2">
+              <Input type="email" placeholder="Enter your email" className="bg-background" />
+              <Button type="submit" variant="default" size="icon" aria-label="Subscribe to newsletter">
+                <Send className="h-4 w-4" />
+              </Button>
+            </form>
+            {/* Social media icons - Add actual SVG icons or Lucide icons if preferred */}
+            {/* <div className="flex space-x-4 mt-4">
+              {socialLinks.map(link => (
+                <Link key={link.name} href={link.href} className="text-muted-foreground hover:text-primary">
+                  <img src={link.icon} alt={link.name} className="h-6 w-6" />
+                </Link>
+              ))}
+            </div> */}
+          </div>
+        </div>
+        <div className="border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} CircuitFlow. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}

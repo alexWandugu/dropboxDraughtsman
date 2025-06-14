@@ -5,8 +5,8 @@ import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'CircuitFlow - Electrical Design Training & Consultation',
-  description: 'Expert electrical design training, consultation, and resources in Kenya by CircuitFlow.',
+  title: 'Dropbox Draughtsman - Electrical Design Training & Consultation',
+  description: 'Expert electrical design training, consultation, and resources in Kenya by Dropbox Draughtsman.',
   manifest: '/manifest.json',
 };
 

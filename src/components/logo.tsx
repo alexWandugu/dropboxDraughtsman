@@ -7,10 +7,10 @@ import CustomLogo from 'src/components/image.svg';
 export function Logo({ className }: { className?: string }) {
   return (
     <Link href="/" className={`flex items-center gap-2 text-2xl font-headline font-bold text-primary hover:text-primary/80 transition-colors ${className}`}>
-      <Zap className="h-7 w-7" />
+      {/* <Zap className="h-7 w-7" /> */}
       {/* <img src = 'src/components/image-removebg-preview (40)-modified.png'/> */}
       {/* <CustomLogo /> */}
-      <Image src="src/components/image.svg" alt="Dropbox Draughtsman Logo" width={40} height={40} />
+      <Image src="/imageL.png" alt="App Logo" width={50} height={30}/>
       Dropbox Draughtsman
     </Link>
   );

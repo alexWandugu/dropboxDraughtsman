@@ -4,15 +4,15 @@ import Image from 'next/image';
 import { Users, Zap, Lightbulb } from 'lucide-react';
 
 export const metadata = {
-  title: 'About Us - CircuitFlow',
-  description: 'Learn more about CircuitFlow, our mission, vision, and the team dedicated to advancing electrical design expertise in Kenya.',
+  title: 'About Us - Dropbox Draughtsman',
+  description: 'Learn more about Dropbox Draughtsman, our mission, vision, and the team dedicated to advancing electrical design expertise in Kenya.',
 };
 
 export default function AboutPage() {
   return (
     <SectionContainer>
       <SectionTitle subtitle="Pioneering Electrical Design Excellence in Kenya">
-        About CircuitFlow
+        About Dropbox Draughtsman
       </SectionTitle>
       
       <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
@@ -29,7 +29,7 @@ export default function AboutPage() {
         <div className="relative aspect-video rounded-lg overflow-hidden shadow-xl">
           <Image 
             src="https://placehold.co/600x400.png" 
-            alt="CircuitFlow Team Working" 
+            alt="Dropbox Draughtsman Team Working" 
             layout="fill" 
             objectFit="cover"
             data-ai-hint="team collaboration"
@@ -38,7 +38,7 @@ export default function AboutPage() {
       </div>
 
       <div className="mb-16">
-        <h3 className="text-3xl font-headline font-semibold text-center text-primary mb-8">Why Choose CircuitFlow?</h3>
+        <h3 className="text-3xl font-headline font-semibold text-center text-primary mb-8">Why Choose Dropbox Draughtsman?</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-card p-6 rounded-lg shadow-md text-center">
             <Users className="h-12 w-12 text-accent mx-auto mb-4" />

@@ -50,7 +50,7 @@ export function AiRecommendationTool() {
           <Textarea
             id="designNeeds"
             name="designNeeds"
-            placeholder="e.g., 'I need to learn about designing control panels for industrial automation' or 'Help me find resources on solar PV system sizing.'"
+            placeholder="e.g., 'I need to learn about designing control panels for industrial automation' or 'Help me find resources on power system design.'"
             rows={5}
             value={designNeeds}
             onChange={(e) => setDesignNeeds(e.target.value)}

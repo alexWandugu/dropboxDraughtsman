@@ -5,8 +5,8 @@ import { SectionTitle } from '@/components/common/section-title';
 import { GraduationCap } from 'lucide-react';
 
 export const metadata = {
-  title: 'Training Programs - CircuitFlow',
-  description: 'Explore our comprehensive electrical design training programs. Enhance your skills with expert-led courses in panel design, AutoCAD Electrical, solar PV systems, and more.',
+  title: 'Training Programs - Dropbox Draughtsman',
+  description: "Explore our comprehensive electrical design training programs. Enhance your skills with expert-led courses in panel design, E-CAD design, power and control systems, and more.",
 };
 
 export default function TrainingProgramsPage() {

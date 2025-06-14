@@ -31,9 +31,9 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-headline font-semibold mb-4 text-primary">Contact Us</h3>
             <address className="text-sm text-muted-foreground not-italic space-y-1">
-              <p>123 Circuit Avenue, Nairobi, Kenya</p>
-              <p>Email: <a href="mailto:info@circuitflow.co.ke" className="hover:text-primary">info@circuitflow.co.ke</a></p>
-              <p>Phone: <a href="tel:+254700000000" className="hover:text-primary">+254 700 000 000</a></p>
+              <p>123 Building Building, Along Thika Road, Juja, Kiambu, Kenya</p>
+              <p>Email: <a href="mailto:dropboxdraughtsman@gmail.com" className="hover:text-primary">dropboxdraughtsman@gmail.com</a></p>
+              <p>Phone: <a href="tel:+254795474704" className="hover:text-primary">+254 795 474 704</a></p>
             </address>
           </div>
           <div>
@@ -56,7 +56,7 @@ export function Footer() {
           </div>
         </div>
         <div className="border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} CircuitFlow. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Dropbox Draughtsman Design. All rights reserved.</p>
         </div>
       </div>
     </footer>

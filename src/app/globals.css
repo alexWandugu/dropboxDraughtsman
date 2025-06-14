@@ -93,6 +93,16 @@ body {
   }
 }
 
+@layer utilities {
+  .mask-logo {
+    -webkit-mask: url('/public/imagelogowhite.svg') no-repeat center;
+    mask: url('/public/imagelogowhite.svg') no-repeat center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    background-color: currentColor;
+  }
+}
+
 /* Subtle scrollbar styling for a modern look */
 ::-webkit-scrollbar {
   width: 8px;

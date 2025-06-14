@@ -6,7 +6,7 @@ import { BookOpen } from 'lucide-react';
 // TODO: Add filtering/search functionality in the future
 
 export const metadata = {
-  title: 'Resource Library - CircuitFlow',
+  title: 'Resource Library - Dropbox Draughtsman',
   description: 'Access our library of electrical design resources, including guides, articles, datasheets, and video tutorials on panel building, IEC standards, and more.',
 };
 

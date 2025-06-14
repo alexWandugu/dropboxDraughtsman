@@ -30,7 +30,7 @@ export default function HomePage() {
           Powering Your Electrical Design Expertise in Kenya
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-slide-up opacity-0" style={{animationDelay: '0.2s'}}>
-          CircuitFlow offers cutting-edge training, expert consultation, and valuable resources for electrical design professionals and enthusiasts.
+          Dropbox Draughtsman offers cutting-edge training, expert consultation, and valuable resources for electrical design professionals and enthusiasts.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16 animate-slide-up opacity-0" style={{animationDelay: '0.3s'}}>
           <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">

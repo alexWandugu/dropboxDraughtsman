@@ -4,8 +4,8 @@ import { SectionTitle } from '@/components/common/section-title';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 export const metadata = {
-  title: 'Consultation - CircuitFlow',
-  description: 'Request expert consultation for your electrical design projects. Contact CircuitFlow for personalized advice and solutions.',
+  title: 'Consultation - Dropbox Draughtsman',
+  description: 'Request expert consultation for your electrical design projects. Contact Dropbox Draughtsman for personalized advice and solutions.',
 };
 
 export default function ConsultationPage() {
@@ -26,21 +26,21 @@ export default function ConsultationPage() {
                 <MapPin className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold">Our Office</h4>
-                  <p className="text-muted-foreground">123 Circuit Avenue, Tech Park, Nairobi, Kenya</p>
+                  <p className="text-muted-foreground">123 Building Building, Along Thika Road, Juja, Kiambu, Kenya</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Mail className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold">Email Us</h4>
-                  <a href="mailto:info@circuitflow.co.ke" className="text-muted-foreground hover:text-primary transition-colors">info@circuitflow.co.ke</a>
+                  <a href="mailto:dropboxdraughtsman@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">dropboxdraughtsman@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Phone className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold">Call Us</h4>
-                  <a href="tel:+254700000000" className="text-muted-foreground hover:text-primary transition-colors">+254 700 000 000</a>
+                  <a href="tel:+254795474704" className="text-muted-foreground hover:text-primary transition-colors">+254 795 474 704</a>
                 </div>
               </div>
             </div>

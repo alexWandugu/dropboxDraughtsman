@@ -5,8 +5,8 @@ import { SectionTitle } from '@/components/common/section-title';
 import { Users } from 'lucide-react';
 
 export const metadata = {
-  title: 'Testimonials - CircuitFlow',
-  description: 'Read what our clients say about CircuitFlow. Discover success stories and testimonials from businesses and professionals who have benefited from our electrical design training and consultation services.',
+  title: 'Testimonials - Dropbox Draughtsman',
+  description: 'Read what our clients say about Dropbox Draughtsman. Discover success stories and testimonials from businesses and professionals who have benefited from our electrical design training and consultation services.',
 };
 
 export default function TestimonialsPage() {

@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -46,6 +47,9 @@ const trainingRecommendationFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await prompt(input);
-    return output!;
+    if (!output) {
+      throw new Error("The AI could not generate a recommendation for the provided input. The response might have been filtered or did not meet the expected format. Please try rephrasing your request.");
+    }
+    return output;
   }
 );

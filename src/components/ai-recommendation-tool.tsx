@@ -1,7 +1,7 @@
+
 'use client';
 
 import { useState, useTransition } from 'react';
-import { useFormState } from 'react-dom';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,21 +20,25 @@ export function AiRecommendationTool() {
   const [designNeeds, setDesignNeeds] = useState('');
   const [isPending, startTransition] = useTransition();
   
-  // Local state to manage API response directly without useFormState for this non-form specific action
   const [recommendationState, setRecommendationState] = useState(initialState);
-
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setRecommendationState(initialState); // Reset previous state
+    setRecommendationState(initialState); 
 
     startTransition(async () => {
-      const result = await getTrainingRecommendationAction({ designNeeds });
-      if (result.success && result.data) {
-        setRecommendationState({ data: result.data, error: null, success: true });
-      } else {
-        setRecommendationState({ data: null, error: result.error || "An unknown error occurred.", success: false });
-      _      }
+      try {
+        const result = await getTrainingRecommendationAction({ designNeeds });
+        if (result.success && result.data) {
+          setRecommendationState({ data: result.data, error: null, success: true });
+        } else {
+          setRecommendationState({ data: null, error: result?.error || "Failed to get recommendation. Please try again.", success: false });
+        }
+      } catch (e) {
+        console.error("Error calling getTrainingRecommendationAction:", e);
+        const errorMessage = e instanceof Error ? e.message : "An unexpected server error occurred.";
+        setRecommendationState({ data: null, error: `Failed to connect to the AI advisor: ${errorMessage}`, success: false });
+      }
     });
   };
 

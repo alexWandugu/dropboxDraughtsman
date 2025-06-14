@@ -1,8 +1,10 @@
 
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/auth-context'; 
+
 import { SchedulingForm } from '@/components/scheduling-form';
 import { SectionContainer } from '@/components/common/section-container';
 import { SectionTitle } from '@/components/common/section-title';
@@ -10,52 +12,27 @@ import { Calendar as ShadCalendar } from "@/components/ui/calendar";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Info, Loader2 } from 'lucide-react';
 
-// Placeholder for actual authentication logic
-const checkAuthStatus = async (): Promise<boolean> => {
-  // In a real app, you would check a token, session, API endpoint, etc.
-  // For this prototype, let's simulate a delay and then control auth status.
-  // Set to `false` to test redirection, `true` to view the page.
-  console.log("Simulating authentication check...");
-  await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
-  const isAuthenticated = false; // <-- CHANGE THIS TO `true` TO ACCESS THE PAGE
-  console.log("Authentication check complete. User is authenticated:", isAuthenticated);
-  return isAuthenticated;
-};
-
 export function SchedulePageClient() {
   const router = useRouter();
-  const [isAuthenticating, setIsAuthenticating] = useState(true);
-  const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(false);
+  const { user, loading: authLoading, isAuthenticated } = useAuth();
 
   useEffect(() => {
-    const verifyAuth = async () => {
-      setIsAuthenticating(true);
-      const authStatus = await checkAuthStatus();
-      setIsAuthenticatedUser(authStatus);
-      setIsAuthenticating(false);
-      if (!authStatus) {
-        router.push('/login'); // Redirect to login page if not authenticated
-      }
-    };
-    verifyAuth();
-  }, [router]);
+    if (!authLoading && !isAuthenticated) {
+      router.push('/login'); 
+    }
+  }, [authLoading, isAuthenticated, router]);
 
-  if (isAuthenticating) {
+  if (authLoading || !isAuthenticated) {
+    // Show loading spinner while auth state is being determined or if not authenticated yet (before redirect)
     return (
-      <SectionContainer className="flex flex-col items-center justify-center" style={{ minHeight: 'calc(100vh - 200px)' }}> {/* Adjust minHeight as needed */}
+      <SectionContainer className="flex flex-col items-center justify-center" style={{ minHeight: 'calc(100vh - 200px)' }}>
         <Loader2 className="h-16 w-16 animate-spin text-primary mb-4" />
         <p className="text-muted-foreground">Verifying your access...</p>
       </SectionContainer>
     );
   }
 
-  if (!isAuthenticatedUser) {
-    // This state should ideally not be reached if redirection works as expected.
-    // You could show an "Access Denied" message here or simply return null.
-    return null;
-  }
-
-  // Original SchedulePage content, rendered if authenticated
+  // User is authenticated, render the page content
   return (
     <SectionContainer>
       <SectionTitle subtitle="Book Your Training or Consultation Slot with Ease">
@@ -66,6 +43,7 @@ export function SchedulePageClient() {
           <h3 className="text-2xl font-headline font-semibold mb-4 text-primary">Book an Appointment</h3>
           <p className="text-muted-foreground mb-6">
             Select your desired service, preferred date, and time. Our team will confirm your booking as soon as possible.
+            Welcome, {user?.email}!
           </p>
           <SchedulingForm />
         </div>

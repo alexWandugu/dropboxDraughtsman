@@ -1,7 +1,8 @@
+
 'use client';
 
-import React, { useEffect } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import React, { useEffect, useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -33,7 +34,7 @@ function SubmitButton() {
 }
 
 export function SchedulingForm() {
-  const [state, formAction] = useFormState(submitSchedulingForm, initialState);
+  const [state, formAction] = useActionState(submitSchedulingForm, initialState);
   const [date, setDate] = React.useState<Date | undefined>();
   const formRef = React.useRef<HTMLFormElement>(null);
 

@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -9,7 +10,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Loader2, Send, AlertCircle, CheckCircle } from 'lucide-react';
 import { submitConsultationForm, type ConsultationFormState } from '@/app/actions';
-import React, { useEffect } from 'react';
+import React, { useEffect, useActionState } from 'react';
 
 const initialState: ConsultationFormState = {
   message: '',
@@ -27,7 +28,7 @@ function SubmitButton() {
 }
 
 export function ConsultationForm() {
-  const [state, formAction] = useFormState(submitConsultationForm, initialState);
+  const [state, formAction] = useActionState(submitConsultationForm, initialState);
   const formRef = React.useRef<HTMLFormElement>(null);
 
   useEffect(() => {

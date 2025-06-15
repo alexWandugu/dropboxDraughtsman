@@ -13,6 +13,7 @@ import {
   RecaptchaVerifier,
   GoogleAuthProvider,
   signInWithPopup,
+  updateProfile,
   type AuthError,
   type ConfirmationResult,
 } from 'firebase/auth';
@@ -24,7 +25,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { LogIn, UserPlus, Loader2, AlertCircle, Smartphone, ShieldCheck, Mail, KeyRound, MessageSquare } from 'lucide-react';
+import { LogIn, UserPlus, Loader2, AlertCircle, Smartphone, ShieldCheck, Mail, KeyRound, MessageSquare, User } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
 import { Separator } from '@/components/ui/separator';
@@ -57,6 +58,7 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
 
   // Phone Auth State
+  const [fullNamePhone, setFullNamePhone] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState('');
   const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
@@ -69,7 +71,6 @@ export default function LoginPage() {
     register: registerEmailLogin,
     handleSubmit: handleEmailLoginSubmit,
     formState: { errors: emailLoginErrors },
-    reset: resetEmailLogin,
   } = useForm<EmailLoginFormData>({
     resolver: zodResolver(emailLoginSchema),
   });
@@ -79,54 +80,53 @@ export default function LoginPage() {
     register: registerEmailRegister,
     handleSubmit: handleEmailRegisterSubmit,
     formState: { errors: emailRegisterErrors },
-    reset: resetEmailRegister,
   } = useForm<EmailRegisterFormData>({
     resolver: zodResolver(emailRegisterSchema),
   });
   
   // Setup reCAPTCHA verifier
   useEffect(() => {
-    if (recaptchaContainerRef.current && !recaptchaVerifier) {
+    if (recaptchaContainerRef.current && !recaptchaVerifier && auth) {
       const verifier = new RecaptchaVerifier(auth, recaptchaContainerRef.current, {
-        size: 'invisible', // Can be 'normal' or 'invisible'
+        size: 'invisible', 
         callback: (response: any) => {
-          // reCAPTCHA solved, allow signInWithPhoneNumber.
           console.log("reCAPTCHA solved:", response);
         },
         'expired-callback': () => {
-          // Response expired. Ask user to solve reCAPTCHA again.
           toast({ variant: "destructive", title: "reCAPTCHA Expired", description: "Please try sending the OTP again." });
-          if (recaptchaVerifier) {
+          if (recaptchaVerifier && typeof grecaptcha !== 'undefined' && grecaptcha.reset) {
             recaptchaVerifier.render().then(widgetId => {
-              if (typeof grecaptcha !== 'undefined') {
-                grecaptcha.reset(widgetId);
-              }
+               if (widgetId !== undefined) grecaptcha.reset(widgetId);
             });
           }
         },
       });
       setRecaptchaVerifier(verifier);
     }
-    // Cleanup on unmount
+    
     return () => {
       if (recaptchaVerifier) {
         recaptchaVerifier.clear();
       }
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [recaptchaContainerRef.current]); // Rerun when ref is available
+  }, [recaptchaContainerRef, toast]); 
 
 
   const handleSendOtp = async () => {
     setIsLoading(true);
     setError(null);
     if (!recaptchaVerifier) {
-      setError("reCAPTCHA not initialized. Please refresh the page.");
+      setError("reCAPTCHA not initialized. Please refresh the page or wait a moment.");
       setIsLoading(false);
       return;
     }
+    if (!fullNamePhone.trim() && !isOtpSent) { // Only require full name if OTP is not yet sent (initial registration attempt)
+        setError("Full name is required to send OTP for new users.");
+        setIsLoading(false);
+        return;
+    }
     try {
-      // Ensure phone number is in E.164 format (e.g., +1234567890)
       const formattedPhoneNumber = phoneNumber.startsWith('+') ? phoneNumber : `+${phoneNumber}`;
       if (!/^\+[1-9]\d{1,14}$/.test(formattedPhoneNumber)) {
         setError("Invalid phone number format. Please include country code e.g. +254712345678");
@@ -143,12 +143,9 @@ export default function LoginPage() {
       console.error("Error sending OTP:", authError);
       setError(authError.message || 'Failed to send OTP. Please check the phone number and try again.');
       toast({ variant: "destructive", title: "OTP Send Failed", description: authError.message });
-       // Reset reCAPTCHA if it exists
-      if (recaptchaVerifier) {
-        recaptchaVerifier.render().then(widgetId => {
-          if (typeof grecaptcha !== 'undefined' && grecaptcha.reset) {
-             grecaptcha.reset(widgetId);
-          }
+      if (recaptchaVerifier && typeof grecaptcha !== 'undefined' && grecaptcha.reset) {
+         recaptchaVerifier.render().then(widgetId => {
+           if (widgetId !== undefined) grecaptcha.reset(widgetId);
         });
       }
     } finally {
@@ -165,7 +162,15 @@ export default function LoginPage() {
       return;
     }
     try {
-      await confirmationResult.confirm(otp);
+      const result = await confirmationResult.confirm(otp);
+      const user = result.user;
+      
+      // Update profile with full name if it's a new user or display name is not set
+      if (user && (!user.displayName || user.displayName !== fullNamePhone) && fullNamePhone.trim()) {
+        await updateProfile(user, { displayName: fullNamePhone });
+        toast({ title: "Profile Updated", description: "Your full name has been set." });
+      }
+
       toast({ title: "Sign In Successful", description: "Welcome!" });
       router.push('/schedule');
     } catch (e) {
@@ -197,8 +202,10 @@ export default function LoginPage() {
     setIsLoading(true);
     setError(null);
     try {
-      await createUserWithEmailAndPassword(auth, data.emailRegister, data.passwordRegister);
-      // Optionally update profile with fullNameRegister here if needed
+      const userCredential = await createUserWithEmailAndPassword(auth, data.emailRegister, data.passwordRegister);
+      if (userCredential.user) {
+        await updateProfile(userCredential.user, { displayName: data.fullNameRegister });
+      }
       toast({ title: "Registration Successful", description: "Your account has been created." });
       router.push('/schedule');
     } catch (e) {
@@ -239,21 +246,38 @@ export default function LoginPage() {
             <CardTitle className="text-2xl font-headline text-primary flex items-center">
               <Smartphone className="mr-2 h-6 w-6" /> Sign In or Register with Phone
             </CardTitle>
-            <CardDescription>Enter your phone number to receive an OTP.</CardDescription>
+            <CardDescription>Enter your full name and phone number to receive an OTP.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             {!isOtpSent ? (
-              <div className="space-y-1">
-                <Label htmlFor="phone">Phone Number (e.g. +254712345678)</Label>
-                <Input 
-                  id="phone" 
-                  type="tel" 
-                  placeholder="e.g. +254712345678" 
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  disabled={isLoading}
-                />
-              </div>
+              <>
+                <div className="space-y-1">
+                  <Label htmlFor="fullNamePhone">Full Name</Label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                    <Input 
+                      id="fullNamePhone" 
+                      type="text" 
+                      placeholder="e.g. Jane Doe" 
+                      value={fullNamePhone}
+                      onChange={(e) => setFullNamePhone(e.target.value)}
+                      disabled={isLoading}
+                      className="pl-10"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <Label htmlFor="phone">Phone Number (e.g. +254712345678)</Label>
+                  <Input 
+                    id="phone" 
+                    type="tel" 
+                    placeholder="e.g. +254712345678" 
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    disabled={isLoading}
+                  />
+                </div>
+              </>
             ) : (
               <div className="space-y-1">
                 <Label htmlFor="otp">Enter OTP</Label>
@@ -272,7 +296,7 @@ export default function LoginPage() {
           </CardContent>
           <CardFooter className="flex flex-col gap-4">
             {!isOtpSent ? (
-              <Button onClick={handleSendOtp} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" disabled={isLoading || !phoneNumber.trim()}>
+              <Button onClick={handleSendOtp} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" disabled={isLoading || !phoneNumber.trim() || !fullNamePhone.trim()}>
                 {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <MessageSquare className="mr-2 h-4 w-4" />}
                 Send OTP
               </Button>
@@ -391,3 +415,4 @@ export default function LoginPage() {
     </SectionContainer>
   );
 }
+

@@ -1,8 +1,7 @@
 
 import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
 import { getAuth, type Auth } from "firebase/auth";
-// import { getFirestore } from "firebase/firestore";
-// import { getStorage } from "firebase/storage";
+import { getFirestore, collection, getDocs, query, where, limit, orderBy, type Firestore } from "firebase/firestore";
 
 // Explicitly check for the API key and log a detailed error if it's missing.
 if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
@@ -35,7 +34,7 @@ if (!getApps().length) {
 }
 
 const auth: Auth = getAuth(app);
-// const firestore = getFirestore(app);
+const firestore: Firestore = getFirestore(app);
 // const storage = getStorage(app);
 
-export { app, auth /*, firestore, storage */ };
+export { app, auth, firestore, collection, getDocs, query, where, limit, orderBy };

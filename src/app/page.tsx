@@ -1,4 +1,5 @@
 
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -19,6 +20,8 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import Autoplay from "embla-carousel-autoplay";
+import React from 'react';
 
 export default function HomePage() {
   const featuredPrograms = trainingPrograms.slice(0, 3);
@@ -31,6 +34,11 @@ export default function HomePage() {
     "Comprehensive Resource Library",
     "Panel Building & Design Expertise"
   ];
+
+  const autoplayPlugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true })
+  );
+
 
   return (
     <div className="animate-fade-in">
@@ -65,13 +73,16 @@ export default function HomePage() {
               align: "start",
               loop: true,
             }}
+            plugins={[autoplayPlugin.current]}
+            onMouseEnter={autoplayPlugin.current.stop}
+            onMouseLeave={autoplayPlugin.current.play}
             className="w-full max-w-5xl mx-auto"
           >
             <CarouselContent>
               {showcaseActivities.map((activity, index) => (
                 <CarouselItem key={activity.id} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1 h-full">
-                    <Card className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <Card className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
                       <CardHeader className="p-0 relative">
                         <div className="aspect-video relative">
                           <Image

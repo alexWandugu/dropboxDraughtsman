@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -5,10 +6,19 @@ import { AiRecommendationTool } from '@/components/ai-recommendation-tool';
 import { TrainingProgramCard } from '@/components/training-program-card';
 import { ResourceCard } from '@/components/resource-card';
 import { TestimonialCard } from '@/components/testimonial-card';
-import { trainingPrograms, resources, testimonials } from '@/data/mock-data';
+import { trainingPrograms, resources, testimonials, showcaseActivities } from '@/data/mock-data';
 import { SectionContainer } from '@/components/common/section-container';
 import { SectionTitle } from '@/components/common/section-title';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, Briefcase } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 export default function HomePage() {
   const featuredPrograms = trainingPrograms.slice(0, 3);
@@ -41,6 +51,65 @@ export default function HomePage() {
           </Button>
         </div>
       </SectionContainer>
+
+      {/* Current Activities Showcase Section */}
+      {showcaseActivities.length > 0 && (
+        <SectionContainer id="current-activities" className="bg-muted/40">
+          <SectionTitle subtitle="Stay Updated with Our Latest Initiatives and Events">
+            <div className="flex items-center justify-center gap-2">
+             <Briefcase className="h-10 w-10" /> Current Activities Showcase
+            </div>
+          </SectionTitle>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-5xl mx-auto"
+          >
+            <CarouselContent>
+              {showcaseActivities.map((activity, index) => (
+                <CarouselItem key={activity.id} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1 h-full">
+                    <Card className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                      <CardHeader className="p-0 relative">
+                        <div className="aspect-video relative">
+                          <Image
+                            src={activity.imageUrl}
+                            alt={activity.title}
+                            layout="fill"
+                            objectFit="cover"
+                            data-ai-hint={activity.dataAihint}
+                            className="transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                      </CardHeader>
+                      <CardContent className="p-6 flex-grow">
+                        <Badge variant="secondary" className="mb-2">{activity.category}</Badge>
+                        <CardTitle className="text-xl font-headline mb-2 text-primary">{activity.title}</CardTitle>
+                        <CardDescription className="text-sm text-muted-foreground mb-4 text-ellipsis overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
+                          {activity.description}
+                        </CardDescription>
+                      </CardContent>
+                      {activity.link && (
+                        <CardFooter className="p-6 bg-card/50 mt-auto">
+                          <Button asChild variant="outline" className="w-full">
+                            <Link href={activity.link}>
+                              Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
+                          </Button>
+                        </CardFooter>
+                      )}
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden sm:flex" />
+            <CarouselNext className="hidden sm:flex" />
+          </Carousel>
+        </SectionContainer>
+      )}
 
       {/* AI Recommendation Tool Section */}
       <SectionContainer id="ai-advisor" className="bg-card">

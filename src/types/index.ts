@@ -1,3 +1,4 @@
+
 import type { LucideIcon } from 'lucide-react';
 
 export interface Instructor {
@@ -5,6 +6,7 @@ export interface Instructor {
   name: string;
   bio: string;
   imageUrl: string;
+  dataAihint?: string;
   specialization: string;
 }
 
@@ -20,6 +22,7 @@ export interface TrainingProgram {
   instructors: Instructor[];
   icon?: LucideIcon;
   image?: string;
+  dataAihint?: string;
   learnings: string[];
 }
 
@@ -33,6 +36,7 @@ export interface Resource {
   type: 'guide' | 'article' | 'datasheet' | 'video';
   icon?: LucideIcon;
   imageUrl?: string;
+  dataAihint?: string;
   category: string;
   publishedDate: string;
 }
@@ -44,12 +48,24 @@ export interface Testimonial {
   testimonial: string;
   projectTitle?: string;
   caseStudySummary?: string;
-  imageUrl?: string; // client logo or project image
+  imageUrl?: string; 
+  dataAihintSecondary?: string;
   clientImageUrl?: string;
+  dataAihint?: string;
 }
 
 export interface NavItem {
   label: string;
   href: string;
   icon?: LucideIcon;
+}
+
+export interface ShowcaseActivity {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  dataAihint: string;
+  link?: string;
+  category: string;
 }

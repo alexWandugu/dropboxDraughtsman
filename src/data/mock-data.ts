@@ -1,10 +1,11 @@
-import type { TrainingProgram, Instructor, Resource, Testimonial } from '@/types';
-import { Zap, CircuitBoard, Lightbulb, FileText, Download, Video, Star, Users, GraduationCap, BookOpen, MessageCircle, CalendarDays, DraftingCompass, Settings, SlidersHorizontal, Home } from 'lucide-react';
+
+import type { TrainingProgram, Instructor, Resource, Testimonial, ShowcaseActivity } from '@/types';
+import { Zap, CircuitBoard, Lightbulb, FileText, Download, Video, Star, Users, GraduationCap, BookOpen, MessageCircle, CalendarDays, DraftingCompass, Settings, SlidersHorizontal, Home, Annoyed } from 'lucide-react';
 
 export const instructors: Instructor[] = [
-  { id: 'inst1', name: 'Eng. Jane Doe', bio: 'Lead Electrical Engineer with 15+ years of experience in industrial automation and panel design. Certified trainer for Siemens and Schneider Electric systems.', imageUrl: 'https://placehold.co/100x100.png', specialization: 'Industrial Automation' ,},
-  { id: 'inst2', name: 'Dr. John Smith', bio: 'PhD in Electrical Engineering, specializing in renewable energy systems and power distribution. Published author and conference speaker.', imageUrl: 'https://placehold.co/100x100.png', specialization: 'Renewable Energy',},
-  { id: 'inst3', name: 'Alice Wanjiru', bio: 'Expert in CAD software for electrical design (AutoCAD Electrical, EPLAN). 10 years of experience in creating detailed schematics and layouts.', imageUrl: 'https://placehold.co/100x100.png', specialization: 'CAD Design', },
+  { id: 'inst1', name: 'Eng. Jane Doe', bio: 'Lead Electrical Engineer with 15+ years of experience in industrial automation and panel design. Certified trainer for Siemens and Schneider Electric systems.', imageUrl: 'https://placehold.co/100x100.png', dataAihint: 'engineer portrait', specialization: 'Industrial Automation' ,},
+  { id: 'inst2', name: 'Dr. John Smith', bio: 'PhD in Electrical Engineering, specializing in renewable energy systems and power distribution. Published author and conference speaker.', imageUrl: 'https://placehold.co/100x100.png', dataAihint: 'academic portrait', specialization: 'Renewable Energy',},
+  { id: 'inst3', name: 'Alice Wanjiru', bio: 'Expert in CAD software for electrical design (AutoCAD Electrical, EPLAN). 10 years of experience in creating detailed schematics and layouts.', imageUrl: 'https://placehold.co/100x100.png', dataAihint: 'designer portrait', specialization: 'CAD Design', },
 ];
 
 export const trainingPrograms: TrainingProgram[] = [
@@ -50,7 +51,7 @@ export const trainingPrograms: TrainingProgram[] = [
     instructors: [instructors[1]],
     icon: Zap,
     image: 'https://placehold.co/600x400.png',
-    dataAihint: 'power and control systems',
+    dataAihint: 'power systems',
     learnings: ['Power and Control system components', 'Site assessment', 'System sizing and design', 'Installation, commissioning & Troublesh0oting']
   },
 ];
@@ -89,7 +90,7 @@ export const resources: Resource[] = [
     description: 'A step-by-step video tutorial on configuring a Variable Frequency Drive for motor control.',
     type: 'video',
     icon: Video,
-    downloadUrl: 'https://www.youtube.com/watch?v=example', // Link to a video
+    downloadUrl: 'https://www.youtube.com/watch?v=example',
     category: 'Tutorials',
     publishedDate: '2023-09-20',
     imageUrl: 'https://placehold.co/400x300.png',
@@ -119,7 +120,7 @@ export const testimonials: Testimonial[] = [
     projectTitle: 'Team Skill Enhancement Program',
     clientImageUrl: 'https://placehold.co/80x80.png',
     dataAihint: 'company logo',
-    imageUrl: 'https://placehold.co/600x400.png', // project image
+    imageUrl: 'https://placehold.co/600x400.png', 
     dataAihintSecondary: 'factory machinery',
   },
   {
@@ -141,9 +142,48 @@ export const testimonials: Testimonial[] = [
     clientImageUrl: 'https://placehold.co/80x80.png',
     dataAihint: 'person smiling',
     imageUrl: 'https://placehold.co/600x400.png',
-    dataAihintSecondary: 'resourcing',
+    dataAihintSecondary: 'electrical workshop',
   },
 ];
+
+export const showcaseActivities: ShowcaseActivity[] = [
+  {
+    id: 'sa1',
+    title: 'Advanced Panel Design Workshop',
+    description: 'Our latest workshop focusing on IEC 61439 compliance and modern panel building techniques.',
+    imageUrl: 'https://placehold.co/800x450.png',
+    dataAihint: 'workshop training',
+    category: 'Ongoing Program',
+    link: '/training#panel-design-masterclass',
+  },
+  {
+    id: 'sa2',
+    title: 'E-CAD Essentials Course Launch',
+    description: 'Now enrolling for our popular E-CAD course using EPlan. Limited seats available!',
+    imageUrl: 'https://placehold.co/800x450.png',
+    dataAihint: 'computer software',
+    category: 'New Course',
+    link: '/training#E-CAD-essentials',
+  },
+  {
+    id: 'sa3',
+    title: 'Kenya Power Systems Seminar Highlights',
+    description: 'Successful seminar on power system design and installation best practices. Thanks to all attendees!',
+    imageUrl: 'https://placehold.co/800x450.png',
+    dataAihint: 'seminar presentation',
+    category: 'Recent Event',
+  },
+  {
+    id: 'sa4',
+    title: 'Free Consultation Week',
+    description: 'Book a free 30-minute consultation with our experts this month. Limited slots!',
+    imageUrl: 'https://placehold.co/800x450.png',
+    dataAihint: 'team meeting',
+    category: 'Special Offer',
+    link: '/consultation',
+  },
+];
+
 
 export const navIcons = {
   Home,
@@ -156,5 +196,6 @@ export const navIcons = {
   CircuitBoard,
   DraftingCompass,
   Lightbulb,
-  SlidersHorizontal
+  SlidersHorizontal,
+  Annoyed,
 };

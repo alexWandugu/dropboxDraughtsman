@@ -36,7 +36,7 @@ export default function HomePage() {
   ];
 
   const autoplayPlugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true })
+    Autoplay({ delay: 5000, stopOnInteraction: true, stopOnMouseEnter: false })
   );
 
 
@@ -74,8 +74,6 @@ export default function HomePage() {
               loop: true,
             }}
             plugins={[autoplayPlugin.current]}
-            onMouseEnter={autoplayPlugin.current.stop}
-            onMouseLeave={autoplayPlugin.current.play}
             className="w-full max-w-5xl mx-auto"
           >
             <CarouselContent>
@@ -104,7 +102,13 @@ export default function HomePage() {
                       </CardContent>
                       {activity.link && (
                         <CardFooter className="p-6 bg-card/50 mt-auto">
-                          <Button asChild variant="outline" className="w-full">
+                          <Button 
+                            asChild 
+                            variant="outline" 
+                            className="w-full"
+                            onMouseEnter={() => autoplayPlugin.current?.stop()}
+                            onMouseLeave={() => autoplayPlugin.current?.play()}
+                          >
                             <Link href={activity.link}>
                               Learn More <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>

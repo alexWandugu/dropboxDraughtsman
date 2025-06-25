@@ -1,6 +1,9 @@
 
 'use server';
 
+// Explicitly load environment variables from .env file
+// This is crucial for server environments where .env might not be loaded automatically
+import 'dotenv/config';
 import nodemailer from 'nodemailer';
 
 interface SendEmailOptions {
@@ -35,14 +38,15 @@ export async function sendEmail({ to, subject, html }: SendEmailOptions) {
   ) {
     console.warn(
       'Email server environment variables are not fully configured. ' +
-      'Skipping email notification. Please check your .env file.'
+      'Skipping email notification. Please check your .env file. ' +
+      'Required variables: EMAIL_SERVER_HOST, EMAIL_SERVER_PORT, EMAIL_SERVER_USER, EMAIL_SERVER_PASSWORD, EMAIL_FROM.'
     );
     // We return success=true here to avoid showing an error to the user
     // if the main action (saving to DB) was successful. The email is a
     // secondary, non-critical action in this flow.
     return { success: true, message: "Email server not configured." };
   }
-
+  
   const transporter = nodemailer.createTransport({
     host: EMAIL_SERVER_HOST,
     port: parseInt(EMAIL_SERVER_PORT, 10),
@@ -51,22 +55,30 @@ export async function sendEmail({ to, subject, html }: SendEmailOptions) {
       user: EMAIL_SERVER_USER,
       pass: EMAIL_SERVER_PASSWORD,
     },
+    // Enable verbose logging to help diagnose connection issues
+    logger: true,
+    debug: true, 
   });
 
   try {
     const fromName = EMAIL_FROM_NAME || 'Dropbox Draughtsman';
-    await transporter.sendMail({
-      from: `"${fromName}" <${EMAIL_FROM}>`,
-      to: to,
-      subject: subject,
-      html: html,
-    });
-    console.log('Admin notification email sent successfully to', to);
+    const mailOptions = {
+        from: `"${fromName}" <${EMAIL_FROM}>`,
+        to: to,
+        subject: subject,
+        html: html,
+    };
+    
+    // The logger option above will provide verbose output to the console
+    await transporter.sendMail(mailOptions);
+
+    console.log('[Email Service] Nodemailer transport successful.');
     return { success: true };
   } catch (error) {
-    console.error('Failed to send email:', error);
+    console.error('[Email Service] Failed to send email. Nodemailer error:', error);
     // Important: Do not block the user's request if email fails.
     // The main action (e.g., saving data to Firestore) should still succeed.
-    return { success: false, message: `Failed to send email: ${error}` };
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    return { success: false, message: `Failed to send email: ${errorMessage}` };
   }
 }

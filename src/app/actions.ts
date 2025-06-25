@@ -64,7 +64,7 @@ export async function submitGuidanceForm(
     });
 
     // Send email notification to admin
-    await sendEmail({
+    const emailResult = await sendEmail({
       to: process.env.ADMIN_EMAIL || 'admin@example.com', // Fallback for safety
       subject: 'New Project Guidance Request',
       html: `
@@ -81,6 +81,10 @@ export async function submitGuidanceForm(
         <p>${parsed.data.message}</p>
       `,
     });
+
+    if (!emailResult.success) {
+      console.warn(`[Guidance Form] Request saved to DB, but failed to send admin email. Reason: ${emailResult.message}`);
+    }
 
     return { message: "Your request has been submitted successfully! We will get back to you soon.", success: true };
   } catch (error) {
@@ -133,7 +137,7 @@ export async function submitSchedulingForm(
     });
 
     // Send email notification to admin
-    await sendEmail({
+    const emailResult = await sendEmail({
       to: process.env.ADMIN_EMAIL || 'admin@example.com',
       subject: 'New Booking Request',
       html: `
@@ -152,6 +156,10 @@ export async function submitSchedulingForm(
         <p>${parsed.data.notes || 'N/A'}</p>
       `
     });
+
+    if (!emailResult.success) {
+        console.warn(`[Scheduling Form] Request saved to DB, but failed to send admin email. Reason: ${emailResult.message}`);
+    }
 
     return { message: "Booking request submitted successfully! We will confirm your session soon.", success: true };
   } catch (error) {

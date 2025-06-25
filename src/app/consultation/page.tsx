@@ -26,7 +26,7 @@ export default function ConsultationPage() {
                 <MapPin className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold">Our Office</h4>
-                  <p className="text-muted-foreground">123 Building Building, Along Thika Road, Juja, Kiambu, Kenya</p>
+                  <p className="text-muted-foreground">123 Building, Along Thika Road, Juja, Kiambu, Kenya</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">

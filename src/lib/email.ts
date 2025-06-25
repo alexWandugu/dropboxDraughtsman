@@ -20,6 +20,7 @@ export async function sendEmail({ to, subject, html }: SendEmailOptions) {
     EMAIL_SERVER_USER,
     EMAIL_SERVER_PASSWORD,
     EMAIL_FROM,
+    EMAIL_FROM_NAME,
   } = process.env;
 
   // Gracefully handle missing environment variables in production.
@@ -53,8 +54,9 @@ export async function sendEmail({ to, subject, html }: SendEmailOptions) {
   });
 
   try {
+    const fromName = EMAIL_FROM_NAME || 'Dropbox Draughtsman';
     await transporter.sendMail({
-      from: `Dropbox Draughtsman <${EMAIL_FROM}>`,
+      from: `"${fromName}" <${EMAIL_FROM}>`,
       to: to,
       subject: subject,
       html: html,

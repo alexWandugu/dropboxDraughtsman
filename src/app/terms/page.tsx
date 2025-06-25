@@ -20,7 +20,7 @@ export default function TermsPage() {
         <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
 
         <h3><br/>Services</h3>
-        <p>Dropbox Draughtsman provides electrical design training programs, consultation services, and a resource library. Detailed descriptions of services are available on our website.</p>
+        <p>Dropbox Draughtsman provides electrical design training programs, project guidance services, and a resource library. Detailed descriptions of services are available on our website.</p>
         
         <h3><br/>User Accounts</h3>
         <p>When you create an account with us, you must provide information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.</p>

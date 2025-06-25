@@ -127,8 +127,8 @@ export const testimonials: Testimonial[] = [
     id: 'test2',
     clientName: 'Amina Khalid',
     company: 'GreenTech Solutions',
-    testimonial: 'The consultation services provided by Dropbox Draughtsman were invaluable for our new solar installation project. Their expertise helped us optimize the design for maximum efficiency and cost savings.',
-    projectTitle: 'Solar Farm Design Consultation',
+    testimonial: 'The expert guidance provided by Dropbox Draughtsman was invaluable for our new solar installation project. Their expertise helped us optimize the design for maximum efficiency and cost savings.',
+    projectTitle: 'Solar Farm Design Guidance',
     clientImageUrl: 'https://placehold.co/80x80.png',
     dataAihint: 'person portrait',
     imageUrl: 'https://placehold.co/600x400.png',
@@ -175,12 +175,12 @@ export const showcaseActivities: ShowcaseActivity[] = [
   },
   {
     id: 'sa4',
-    title: 'Free Consultation Week',
-    description: 'Book a free 30-minute consultation with our experts this month. Limited slots!',
+    title: 'Free Guidance Week',
+    description: 'Book a free 30-minute guidance session with our experts this month. Limited slots!',
     imageUrl: 'https://placehold.co/800x450.png',
     dataAihint: 'team meeting',
     category: 'Special Offer',
-    link: '/consultation',
+    link: '/guidance',
   },
 ];
 

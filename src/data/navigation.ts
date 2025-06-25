@@ -5,7 +5,7 @@ export const mainNavItems: NavItem[] = [
   { label: 'Home', href: '/', icon: Home },
   { label: 'Training Programs', href: '/training', icon: GraduationCap },
   { label: 'Resources', href: '/resources', icon: BookOpen },
-  { label: 'Consultation', href: '/consultation', icon: MessageCircle },
+  { label: 'Guidance', href: '/guidance', icon: MessageCircle },
   { label: 'Testimonials', href: '/testimonials', icon: Users },
   { label: 'Schedule', href: '/schedule', icon: CalendarDays },
 ];
@@ -14,7 +14,7 @@ export const footerNavItems: NavItem[] = [
   { label: 'About Us', href: '/about' },
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Terms of Service', href: '/terms' },
-  { label: 'Contact', href: '/consultation' },
+  { label: 'Contact', href: '/guidance' },
 ];
 
 export const socialLinks = [

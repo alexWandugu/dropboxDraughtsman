@@ -30,7 +30,7 @@ export default function HomePage() {
 
   const coreServices = [
     "Expert Training Programs",
-    "Personalized Consultations",
+    "Personalized Guidance",
     "Comprehensive Resource Library",
     "Panel Building & Design Expertise"
   ];
@@ -48,14 +48,14 @@ export default function HomePage() {
           Powering Your Electrical Design Expertise in Kenya
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-slide-up opacity-0" style={{animationDelay: '0.2s'}}>
-          Dropbox Draughtsman offers cutting-edge training, expert consultation, and valuable resources for electrical design professionals and enthusiasts.
+          Dropbox Draughtsman offers cutting-edge training, expert guidance, and valuable resources for electrical design professionals and enthusiasts.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16 animate-slide-up opacity-0" style={{animationDelay: '0.3s'}}>
           <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
             <Link href="/training">Explore Training Programs</Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-            <Link href="/consultation">Request Consultation</Link>
+            <Link href="/guidance">Request Guidance</Link>
           </Button>
         </div>
       </SectionContainer>
@@ -200,14 +200,14 @@ export default function HomePage() {
       <SectionContainer className="bg-gradient-to-r from-primary via-primary/90 to-accent/90 text-center">
         <h2 className="text-3xl md:text-4xl font-headline font-bold mb-6 text-primary-foreground">Ready to Elevate Your Electrical Design Skills?</h2>
         <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-8">
-          Join our training programs, request expert consultation, or explore our resource library today.
+          Join our training programs, request expert guidance, or explore our resource library today.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90">
             <Link href="/schedule">Schedule a Session</Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10">
-            <Link href="/consultation">Get in Touch</Link>
+            <Link href="/guidance">Get in Touch</Link>
           </Button>
         </div>
       </SectionContainer>

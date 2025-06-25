@@ -39,7 +39,7 @@ export function SchedulingForm() {
   const formRef = React.useRef<HTMLFormElement>(null);
 
   const serviceOptions = [
-    { value: "consultation", label: "General Consultation" },
+    { value: "project-guidance", label: "Project Guidance" },
     ...trainingPrograms.map(p => ({ value: p.slug, label: p.title })),
   ];
 

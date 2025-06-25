@@ -20,8 +20,8 @@ export async function getTrainingRecommendationAction(input: TrainingRecommendat
   }
 }
 
-// Consultation Form Action
-const ConsultationFormSchema = z.object({
+// Guidance Form Action
+const GuidanceFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Invalid email address." }),
   phone: z.string().min(10, { message: "Phone number seems too short." }).optional().or(z.literal('')),
@@ -29,19 +29,19 @@ const ConsultationFormSchema = z.object({
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
 
-export type ConsultationFormState = {
+export type GuidanceFormState = {
   message: string;
   fields?: Record<string, string>;
   issues?: string[];
   success: boolean;
 };
 
-export async function submitConsultationForm(
-  prevState: ConsultationFormState,
+export async function submitGuidanceForm(
+  prevState: GuidanceFormState,
   data: FormData
-): Promise<ConsultationFormState> {
+): Promise<GuidanceFormState> {
   const formData = Object.fromEntries(data);
-  const parsed = ConsultationFormSchema.safeParse(formData);
+  const parsed = GuidanceFormSchema.safeParse(formData);
 
   if (!parsed.success) {
     return {
@@ -54,15 +54,15 @@ export async function submitConsultationForm(
 
   try {
     // Simulate API call or database save
-    console.log("Consultation Form Data:", parsed.data);
+    console.log("Guidance Form Data:", parsed.data);
     await new Promise(resolve => setTimeout(resolve, 1000)); 
     // In a real app, you'd save this to a database or send an email.
-    // e.g., await saveConsultationRequest(parsed.data);
+    // e.g., await saveGuidanceRequest(parsed.data);
 
-    return { message: "Consultation request submitted successfully! We will get back to you soon.", success: true };
+    return { message: "Your request has been submitted successfully! We will get back to you soon.", success: true };
   } catch (error) {
-    console.error("Error submitting consultation form:", error);
-    return { message: "Failed to submit consultation request. Please try again later.", success: false };
+    console.error("Error submitting guidance form:", error);
+    return { message: "Failed to submit your request. Please try again later.", success: false };
   }
 }
 

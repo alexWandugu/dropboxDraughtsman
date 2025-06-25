@@ -19,20 +19,20 @@ const attachmentImages = [
     hint: 'students designing'
   },
   {
-    src: 'https://placehold.co/800x600.png',
-    alt: 'Hands-on assembly of an electrical panel',
+    src: 'https://ik.imagekit.io/arlpx2025/Wiring%20In%20Groups.jpeg?updatedAt=1750843891263',
+    alt: 'Hands-on collaborative assembly of an electrical panel',
     hint: 'panel assembly'
   },
   {
-    src: 'https://placehold.co/800x600.png',
-    alt: 'Wiring components within a control panel',
+    src: 'https://ik.imagekit.io/arlpx2025/student%20panel%20Kit.jpeg?updatedAt=1750843724581',
+    alt: 'Wiring components within a descrete control panel kit',
     hint: 'electrical wiring'
   },
-  {
-    src: 'https://placehold.co/800x600.png',
-    alt: 'Testing a completed electrical panel with diagnostic tools',
-    hint: 'electrical testing'
-  },
+  // {
+  //   src: 'https://placehold.co/800x600.png',
+  //   alt: 'Testing a completed electrical panel with diagnostic tools',
+  //   hint: 'electrical testing'
+  // },
 ];
 
 const keyLearnings = [
@@ -59,10 +59,10 @@ export default function AttachmentProgramPage() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="prose prose-invert max-w-none text-muted-foreground">
             <p className="text-lg">
-              Our Industrial Attachment Program is designed for aspiring electrical engineers and technicians to gain invaluable, hands-on experience. In this program, students learn the full walk-through of an electrical panel from design, manufacture, and testing.
+              This Industrial Attachment Program is designed for aspiring electrical engineers and technicians to gain invaluable, hands-on experience. In this program, students learn the full walk-through of an electrical panel from design, manufacture, and testing.
             </p>
             <p>
-              You will work alongside our experienced engineers, contributing to real projects and understanding the practical challenges and solutions in the world of electrical design and automation.
+              You will work alongside an experienced engineer, contributing and understanding the practical challenges and solutions in the world of electrical design and automation.
             </p>
             <h3 className="text-primary">Who is this for?</h3>
             <p>
@@ -83,8 +83,8 @@ export default function AttachmentProgramPage() {
       </SectionContainer>
 
       <SectionContainer className="bg-muted/40">
-        <SectionTitle subtitle="What You Will Experience">
-          Program Highlights
+        <SectionTitle subtitle="What they are Experiencing">
+          Program Highlights so far
         </SectionTitle>
         <Carousel
           opts={{ align: "start", loop: true, }}

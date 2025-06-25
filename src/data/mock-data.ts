@@ -5,7 +5,7 @@ import { Zap, CircuitBoard, Lightbulb, FileText, Download, Video, Star, Users, G
 export const instructors: Instructor[] = [
   { id: 'inst1', name: 'G Eng. Edgar K. MUTICHI', bio: 'Lead Electrical Engineer with experience in industrial automation and panel design.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'engineer portrait', specialization: 'Industrial Automation' ,},
   { id: 'inst2', name: 'Dr. John Smith', bio: 'PhD in Electrical Engineering, specializing in renewable energy systems and power distribution. Published author and conference speaker.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'academic portrait', specialization: 'Renewable Energy',},
-  { id: 'inst3', name: 'Alice Wanjiru', bio: 'Expert in CAD software for electrical design (AutoCAD Electrical, EPLAN). 10 years of experience in creating detailed schematics and layouts.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'designer portrait', specialization: 'CAD Design', },
+  { id: 'inst3', name: 'G Eng. Edgar K. MUTICHI', bio: 'Expert in CAD software for electrical design (AutoCAD Electrical, EPLAN). Experienced in creating detailed schematics and layouts.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'designer portrait', specialization: 'CAD Design', },
 ];
 
 export const trainingPrograms: TrainingProgram[] = [
@@ -18,7 +18,7 @@ export const trainingPrograms: TrainingProgram[] = [
     schedule: 'Mon-Fri, 9 AM - 5 PM',
     duration: '4 Weeks',
     price: 'KES 50,000',
-    instructors: [instructors[0], instructors[2]],
+    instructors: [instructors[0]],
     icon: CircuitBoard,
     image: 'https://ik.imagekit.io/arlpx2025/EPanel-Design-MasterClass.jpg?updatedAt=1750836260181',
     dataAihint: 'electrical panel',
@@ -48,7 +48,7 @@ export const trainingPrograms: TrainingProgram[] = [
     schedule: 'Flexible Online Modules + 1 Week Practical',
     duration: '8 Weeks (Online) + 1 Week (Practical)',
     price: 'KES 65,000',
-    instructors: [instructors[1]],
+    instructors: [instructors[0]],
     icon: Zap,
     image: 'https://ik.imagekit.io/arlpx2025/P&C%20Systems%20Design.jpg?updatedAt=1750833782969',
     dataAihint: 'power systems',
@@ -68,7 +68,7 @@ export const resources: Resource[] = [
     content: 'This document provides a comprehensive walkthrough of the IEC 61439 standards for low-voltage switchgear and controlgear assemblies. Download the full PDF for detailed diagrams, checklists, and compliance requirements.',
     category: 'Standards',
     publishedDate: '2023-10-15',
-    imageUrl: 'https://i.imgur.com/8a1wM0r.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/IEC.jpg?updatedAt=1750832138122',
     dataAihint: 'electrical standards',
   },
   {
@@ -123,11 +123,11 @@ By following these tips, you can build electrical panels that are not only funct
     description: 'A step-by-step video tutorial on configuring a Variable Frequency Drive for motor control.',
     type: 'video',
     icon: Video,
-    downloadUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    downloadUrl: 'https://ik.imagekit.io/arlpx2025/IEC.jpg?updatedAt=1750832138122',
     content: 'This video tutorial provides a step-by-step guide to setting up a basic Variable Frequency Drive (VFD) for motor control. Follow along to understand the key parameters and configuration steps. Click the link to watch the full video on YouTube.',
     category: 'Tutorials',
     publishedDate: '2023-09-20',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/resource_placeholder_400x300.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/Basic%20VFD%20Setup.jpg?updatedAt=1750844492273',
     dataAihint: 'electrical component',
   },
    {
@@ -147,38 +147,38 @@ By following these tips, you can build electrical panels that are not only funct
 ];
 
 export const testimonials: Testimonial[] = [
-  {
-    id: 'test1',
-    clientName: 'Baraka Ltd',
-    company: 'Baraka Manufacturing Ltd.',
-    testimonial: 'Dropbox Draughtsman\'s panel design training significantly improved our team\'s skills. We\'ve seen a 20% reduction in design errors and faster project turnaround. Highly recommended!',
-    projectTitle: 'Team Skill Enhancement Program',
-    clientImageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_client_placeholder_80x80.png',
-    dataAihint: 'company logo',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_project_placeholder_600x400.png', 
-    dataAihintSecondary: 'factory machinery',
-  },
-  {
-    id: 'test2',
-    clientName: 'Amina Khalid',
-    company: 'GreenTech Solutions',
-    testimonial: 'The expert guidance provided by Dropbox Draughtsman was invaluable for our new solar installation project. Their expertise helped us optimize the design for maximum efficiency and cost savings.',
-    projectTitle: 'Solar Farm Design Guidance',
-    clientImageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_client_placeholder_80x80.png',
-    dataAihint: 'person portrait',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_project_placeholder_600x400.png',
-    dataAihintSecondary: 'solar farm',
-  },
-  {
-    id: 'test3',
-    clientName: 'David Otieno',
-    company: 'OtiConnect Electricals',
-    testimonial: 'As a small business owner, the resources Dropbox Draughtsman provides are gold. The downloadable guides on panel building have been a fantastic reference for my team.',
-    clientImageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_client_placeholder_80x80.png',
-    dataAihint: 'person smiling',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_project_placeholder_600x400.png',
-    dataAihintSecondary: 'electrical workshop',
-  },
+  // {
+  //   id: 'test1',
+  //   clientName: 'Baraka Ltd',
+  //   company: 'Baraka Manufacturing Ltd.',
+  //   testimonial: 'Dropbox Draughtsman\'s panel design training significantly improved our team\'s skills. We\'ve seen a 20% reduction in design errors and faster project turnaround. Highly recommended!',
+  //   projectTitle: 'Team Skill Enhancement Program',
+  //   clientImageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_client_placeholder_80x80.png',
+  //   dataAihint: 'company logo',
+  //   imageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_project_placeholder_600x400.png', 
+  //   dataAihintSecondary: 'factory machinery',
+  // },
+  // {
+  //   id: 'test2',
+  //   clientName: 'Amina Khalid',
+  //   company: 'GreenTech Solutions',
+  //   testimonial: 'The expert guidance provided by Dropbox Draughtsman was invaluable for our new solar installation project. Their expertise helped us optimize the design for maximum efficiency and cost savings.',
+  //   projectTitle: 'Solar Farm Design Guidance',
+  //   clientImageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_client_placeholder_80x80.png',
+  //   dataAihint: 'person portrait',
+  //   imageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_project_placeholder_600x400.png',
+  //   dataAihintSecondary: 'solar farm',
+  // },
+  // {
+  //   id: 'test3',
+  //   clientName: 'David Otieno',
+  //   company: 'OtiConnect Electricals',
+  //   testimonial: 'As a small business owner, the resources Dropbox Draughtsman provides are gold. The downloadable guides on panel building have been a fantastic reference for my team.',
+  //   clientImageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_client_placeholder_80x80.png',
+  //   dataAihint: 'person smiling',
+  //   imageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_project_placeholder_600x400.png',
+  //   dataAihintSecondary: 'electrical workshop',
+  // },
 ];
 
 export const showcaseActivities: ShowcaseActivity[] = [
@@ -186,14 +186,14 @@ export const showcaseActivities: ShowcaseActivity[] = [
     id: 'sa-attachment',
     title: 'Industrial Attachment Program',
     description: 'A hands-on program where students experience the complete lifecycle of electrical panel creation, from initial design and manufacturing to final testing and commissioning.',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/students_workshop.jpg',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/training%20ad.jpeg?updatedAt=1750840125763',
     dataAihint: 'students workshop',
     category: 'Attachment Program',
     link: '/attachment-program',
   },
   {
     id: 'sa1',
-    title: 'Advanced Panel Design Workshop',
+    title: 'Panel Design Workshop',
     description: 'Our latest workshop focusing on IEC 61439 compliance and modern panel building techniques.',
     imageUrl: 'https://ik.imagekit.io/arlpx2025/EPanel-Design-MasterClass.jpg?updatedAt=1750836260181',
     dataAihint: 'workshop training',
@@ -209,15 +209,15 @@ export const showcaseActivities: ShowcaseActivity[] = [
     category: 'New Course',
     link: '/training#E-CAD-essentials',
   },
-  {
-    id: 'sa4',
-    title: 'Free Guidance Week',
-    description: 'Book a free 30-minute guidance session with our experts this month. Limited slots!',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/showcase_placeholder_800x450.png',
-    dataAihint: 'team meeting',
-    category: 'Special Offer',
-    link: '/guidance',
-  },
+  // {
+  //   id: 'sa4',
+  //   title: 'Free Guidance Week',
+  //   description: 'Book a free 30-minute guidance session with our experts this month. Limited slots!',
+  //   imageUrl: 'https://ik.imagekit.io/arlpx2025/showcase_placeholder_800x450.png',
+  //   dataAihint: 'team meeting',
+  //   category: 'Special Offer',
+  //   link: '/guidance',
+  // },
 ];
 
 

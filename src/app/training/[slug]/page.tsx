@@ -1,6 +1,7 @@
 
 import { firestore, collection, query, where, getDocs, limit } from '@/lib/firebase';
 import type { TrainingProgram, Instructor } from '@/types';
+import { trainingPrograms as mockTrainingPrograms } from '@/data/mock-data';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,36 +19,44 @@ async function getTrainingProgramBySlug(slug: string): Promise<TrainingProgram |
     const q = query(programsRef, where("slug", "==", slug), limit(1));
     const querySnapshot = await getDocs(q);
 
-    if (querySnapshot.empty) {
-      return null;
+    if (!querySnapshot.empty) {
+      const doc = querySnapshot.docs[0];
+      const data = doc.data();
+      const instructors = (data.instructors || []).map((inst: any) => ({ ...inst })) as Instructor[];
+      return {
+        id: doc.id,
+        ...data,
+        instructors,
+      } as TrainingProgram;
     }
-
-    const doc = querySnapshot.docs[0];
-    const data = doc.data();
-    
-    // Ensure instructors are correctly typed if they are nested
-    const instructors = (data.instructors || []).map((inst: any) => ({ ...inst })) as Instructor[];
-
-    return {
-      id: doc.id,
-      ...data,
-      instructors,
-    } as TrainingProgram;
   } catch (error) {
-    console.error("Error fetching training program by slug from Firestore:", error);
-    return null;
+    console.error(`Error fetching program with slug '${slug}' from Firestore, will check mock data:`, error);
   }
+  
+  // Fallback to mock data
+  console.log(`Program with slug '${slug}' not found in Firestore. Checking mock data.`);
+  const program = mockTrainingPrograms.find(p => p.slug === slug);
+  return program || null;
 }
 
 async function getAllTrainingProgramSlugs(): Promise<{ slug: string }[]> {
+  let slugs: { slug: string }[] = [];
   try {
     const programsCol = collection(firestore, 'trainingPrograms');
     const programSnapshot = await getDocs(programsCol);
-    return programSnapshot.docs.map(doc => ({ slug: doc.data().slug as string }));
+    if (!programSnapshot.empty) {
+      slugs = programSnapshot.docs.map(doc => ({ slug: doc.data().slug as string }));
+    }
   } catch (error) {
-    console.error("Error fetching all training program slugs:", error);
-    return [];
+    console.error("Error fetching all training program slugs from Firestore, will use mock data:", error);
   }
+
+  if (slugs.length === 0) {
+    console.log("No slugs found in Firestore. Using mock data for static generation.");
+    slugs = mockTrainingPrograms.map(p => ({ slug: p.slug }));
+  }
+  
+  return slugs;
 }
 
 

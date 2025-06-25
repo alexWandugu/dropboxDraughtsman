@@ -1,7 +1,9 @@
+
 'use server';
 
 import { z } from 'zod';
 import { trainingRecommendation, type TrainingRecommendationInput } from '@/ai/flows/training-recommendation';
+import { firestore, collection, addDoc, serverTimestamp } from '@/lib/firebase';
 
 // AI Recommendation Action
 export async function getTrainingRecommendationAction(input: TrainingRecommendationInput) {
@@ -53,11 +55,12 @@ export async function submitGuidanceForm(
   }
 
   try {
-    // Simulate API call or database save
-    console.log("Guidance Form Data:", parsed.data);
-    await new Promise(resolve => setTimeout(resolve, 1000)); 
-    // In a real app, you'd save this to a database or send an email.
-    // e.g., await saveGuidanceRequest(parsed.data);
+    const guidanceCollection = collection(firestore, "guidanceRequests");
+    await addDoc(guidanceCollection, {
+      ...parsed.data,
+      createdAt: serverTimestamp(),
+      status: 'new',
+    });
 
     return { message: "Your request has been submitted successfully! We will get back to you soon.", success: true };
   } catch (error) {
@@ -102,11 +105,12 @@ export async function submitSchedulingForm(
   }
   
   try {
-    // Simulate API call or database save
-    console.log("Scheduling Form Data:", parsed.data);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    // In a real app, you would save this to a database, check availability, etc.
-    // e.g., await createBookingRequest(parsed.data);
+    const bookingsCollection = collection(firestore, "bookings");
+    await addDoc(bookingsCollection, {
+        ...parsed.data,
+        createdAt: serverTimestamp(),
+        status: 'pending',
+    });
 
     return { message: "Booking request submitted successfully! We will confirm your session soon.", success: true };
   } catch (error) {

@@ -41,21 +41,11 @@ export function ResourceCard({ resource }: ResourceCardProps) {
         </div>
       </CardContent>
       <CardFooter className="p-6 bg-muted/30">
-        {resource.downloadUrl ? (
-          <Button asChild variant="default" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-            <Link href={resource.downloadUrl} target={resource.type === 'video' ? '_blank' : '_self'} download={resource.type !== 'video'}>
-              {resource.type === 'guide' || resource.type === 'datasheet' ? <Download className="mr-2 h-4 w-4" /> : <ExternalLink className="mr-2 h-4 w-4" />}
-              {resource.type === 'guide' || resource.type === 'datasheet' ? 'Download' : (resource.type === 'video' ? 'Watch Video' : 'Read More')}
-            </Link>
-          </Button>
-        ) : (
-          <Button asChild variant="outline" className="w-full">
-            {/* In a real app, this would link to a detailed resource page e.g. /resources/${resource.slug} */}
-            <Link href={`/resources#${resource.slug}`}>
-              Read More <ExternalLink className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        )}
+        <Button asChild variant="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+          <Link href={`/resources/${resource.slug}`}>
+            View Details <ExternalLink className="ml-2 h-4 w-4" />
+          </Link>
+        </Button>
       </CardFooter>
     </Card>
   );

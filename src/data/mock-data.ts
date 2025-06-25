@@ -65,6 +65,7 @@ export const resources: Resource[] = [
     type: 'guide',
     icon: FileText,
     downloadUrl: '/downloads/iec-61439-guide.pdf',
+    content: 'This document provides a comprehensive walkthrough of the IEC 61439 standards for low-voltage switchgear and controlgear assemblies. Download the full PDF for detailed diagrams, checklists, and compliance requirements.',
     category: 'Standards',
     publishedDate: '2023-10-15',
     imageUrl: 'https://placehold.co/400x300.png',
@@ -77,7 +78,39 @@ export const resources: Resource[] = [
     description: 'An article sharing practical tips for improving efficiency and quality in electrical panel building.',
     type: 'article',
     icon: Lightbulb,
-    content: 'Detailed content for the article goes here...',
+    content: `Building electrical panels requires precision, safety, and efficiency. Whether you are a seasoned professional or just starting, these top 10 tips will help you streamline your workflow, improve the quality of your builds, and ensure safety standards are met.
+
+### 1. Plan Your Layout Meticulously
+Before you even touch a wire, have a clear layout plan. Use software like AutoCAD Electrical or EPLAN to design your panel layout. This helps in visualizing component placement, wire routing, and ensuring adequate space for cooling and future modifications. A good plan minimizes errors and rework.
+
+### 2. Use Quality Components
+Never compromise on the quality of components. Using reputable brands for circuit breakers, contactors, relays, and power supplies ensures reliability and longevity of the panel. It might cost more upfront, but it saves on maintenance and potential failures down the line.
+
+### 3. Label Everything
+Clear and consistent labeling is a lifesaver during troubleshooting and maintenance. Label every wire, terminal block, and component according to your schematic. Use durable, professional-grade labels that won't fade or peel off over time.
+
+### 4. Manage Your Wires
+Proper wire management is not just for aesthetics; it's crucial for safety and functionality. Use wire ducts, trunking, and cable ties to neatly route your wires. This prevents wires from getting pinched, improves airflow, and makes it easier to trace circuits.
+
+### 5. Follow Color Coding Standards
+Adhere to industry-standard color codes for wiring (e.g., IEC 60204). This makes your panel understandable to other professionals and significantly speeds up installation and troubleshooting. For example, use black for AC power, red for AC control, blue for DC control, and green/yellow for earth.
+
+### 6. Correct Tooling is Key
+Invest in high-quality tools. Proper wire strippers, crimpers, and screwdrivers with insulated handles are essential. Using the right tool for the job prevents damage to components and wires and ensures secure connections.
+
+### 7. Torque All Connections
+Loose connections are a common cause of failure and can be a fire hazard. Use a torque screwdriver or wrench to tighten all terminal connections to the manufacturer's specified torque values.
+
+### 8. Test as You Go
+Don't wait until the end to test your panel. Perform continuity tests and point-to-point checks as you complete sections of the wiring. This helps in catching errors early when they are easier to fix.
+
+### 9. Ensure Proper Grounding
+Proper grounding (earthing) is non-negotiable for safety. Ensure you have a single, solid grounding point and that all metallic components of the panel are properly bonded to it.
+
+### 10. Keep Documentation
+Always keep your final schematics, layout drawings, and a bill of materials with the panel. This documentation is invaluable for future maintenance, upgrades, or troubleshooting.
+
+By following these tips, you can build electrical panels that are not only functional and reliable but also safe and easy to maintain.`,
     category: 'Best Practices',
     publishedDate: '2023-11-01',
     imageUrl: 'https://placehold.co/400x300.png',
@@ -90,7 +123,8 @@ export const resources: Resource[] = [
     description: 'A step-by-step video tutorial on configuring a Variable Frequency Drive for motor control.',
     type: 'video',
     icon: Video,
-    downloadUrl: 'https://www.youtube.com/watch?v=example',
+    downloadUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    content: 'This video tutorial provides a step-by-step guide to setting up a basic Variable Frequency Drive (VFD) for motor control. Follow along to understand the key parameters and configuration steps. Click the link to watch the full video on YouTube.',
     category: 'Tutorials',
     publishedDate: '2023-09-20',
     imageUrl: 'https://placehold.co/400x300.png',
@@ -104,6 +138,7 @@ export const resources: Resource[] = [
     type: 'datasheet',
     icon: Settings,
     downloadUrl: '/downloads/datasheet-xyz-2000.pdf',
+    content: 'Access the complete technical datasheet for the Circuit Breaker Model XYZ-2000. The document includes detailed specifications, performance curves, dimensional drawings, and application notes.',
     category: 'Components',
     publishedDate: '2024-01-05',
     imageUrl: 'https://placehold.co/400x300.png',

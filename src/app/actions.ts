@@ -3,7 +3,7 @@
 
 import { z } from 'zod';
 import { trainingRecommendation, type TrainingRecommendationInput } from '@/ai/flows/training-recommendation';
-import { firestore, collection, addDoc, serverTimestamp } from '@/lib/firebase';
+import { firestore, collection, addDoc, serverTimestamp, query, where, getDocs } from '@/lib/firebase';
 import { sendEmail } from '@/lib/email';
 
 // AI Recommendation Action
@@ -165,5 +165,68 @@ export async function submitSchedulingForm(
   } catch (error) {
     console.error("Error submitting scheduling form:", error);
     return { message: "Failed to submit booking request. Please try again later.", success: false };
+  }
+}
+
+// Newsletter Form Action
+const NewsletterFormSchema = z.object({
+  email: z.string().email({ message: "Please enter a valid email address." }),
+});
+
+export type NewsletterFormState = {
+  message: string;
+  success: boolean;
+  issues?: string[];
+};
+
+export async function subscribeToNewsletter(
+  prevState: NewsletterFormState,
+  data: FormData
+): Promise<NewsletterFormState> {
+  const formData = Object.fromEntries(data);
+  const parsed = NewsletterFormSchema.safeParse(formData);
+
+  if (!parsed.success) {
+    const errorMessage = parsed.error.issues.map((issue) => issue.message).join(', ');
+    return {
+      message: errorMessage,
+      success: false,
+      issues: parsed.error.issues.map((issue) => issue.message),
+    };
+  }
+
+  try {
+    const newsletterCollection = collection(firestore, "newsletterSubscriptions");
+    const q = query(newsletterCollection, where("email", "==", parsed.data.email));
+    const existingSubscriberSnapshot = await getDocs(q);
+
+    if (!existingSubscriberSnapshot.empty) {
+      return { message: "This email is already subscribed.", success: true };
+    }
+    
+    await addDoc(newsletterCollection, {
+      email: parsed.data.email,
+      subscribedAt: serverTimestamp(),
+    });
+
+    // Send email notification to admin
+    const emailResult = await sendEmail({
+      to: process.env.ADMIN_EMAIL || 'admin@example.com',
+      subject: 'New Newsletter Subscription',
+      html: `
+        <h1>New Newsletter Subscription</h1>
+        <p>A new user has subscribed to the newsletter.</p>
+        <p><strong>Email:</strong> ${parsed.data.email}</p>
+      `,
+    });
+    
+    if (!emailResult.success) {
+      console.warn(`[Newsletter] Email saved to DB, but failed to send admin email. Reason: ${emailResult.message}`);
+    }
+
+    return { message: "Thank you for subscribing!", success: true };
+  } catch (error) {
+    console.error("Error subscribing to newsletter:", error);
+    return { message: "Failed to subscribe. Please try again later.", success: false };
   }
 }

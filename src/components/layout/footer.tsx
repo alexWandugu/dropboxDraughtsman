@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import { Logo } from '@/components/logo';
-import { footerNavItems, socialLinks } from '@/data/navigation';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Send } from 'lucide-react';
+import { footerNavItems } from '@/data/navigation';
+import { NewsletterForm } from '@/components/newsletter-form';
 
 export function Footer() {
   return (
@@ -39,12 +37,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-headline font-semibold mb-4 text-primary">Newsletter</h3>
             <p className="text-sm text-muted-foreground mb-2">Stay updated with our latest news and offers.</p>
-            <form className="flex gap-2">
-              <Input type="email" placeholder="Enter your email" className="bg-background" />
-              <Button type="submit" variant="default" size="icon" aria-label="Subscribe to newsletter">
-                <Send className="h-4 w-4" />
-              </Button>
-            </form>
+            <NewsletterForm />
             {/* Social media icons - Add actual SVG icons or Lucide icons if preferred */}
             {/* <div className="flex space-x-4 mt-4">
               {socialLinks.map(link => (

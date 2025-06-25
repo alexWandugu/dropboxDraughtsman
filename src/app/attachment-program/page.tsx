@@ -136,14 +136,12 @@ export default function AttachmentProgramPage() {
 
       <SectionContainer className="bg-primary/10">
          <div className="text-center">
-            <h2 className="text-3xl font-headline font-bold text-primary mb-4">Ready to Apply?</h2>
+            <h2 className="text-3xl font-headline font-bold text-primary mb-4">Attachment Program Applications</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                If you are a passionate and driven student ready to kickstart your career in electrical engineering, we would love to hear from you.
+                Applications for our Industrial Attachment Program are currently closed. Please check back later for future opportunities. We look forward to receiving your application when the next cohort opens.
             </p>
-            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                <Link href="/guidance">
-                    Inquire About Attachment <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+            <Button size="lg" disabled>
+                Applications Currently Closed
             </Button>
         </div>
       </SectionContainer>

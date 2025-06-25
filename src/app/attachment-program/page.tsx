@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ArrowRight, CheckCircle } from 'lucide-react';
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 
 const attachmentImages = [
@@ -50,6 +50,35 @@ export default function AttachmentProgramPage() {
     Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })
   );
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [loopCount, setLoopCount] = useState(0);
+  const maxLoops = 2; // Plays once automatically, then loops 2 more times. Total = 3 plays.
+
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+
+    const handleVideoEnd = () => {
+      if (loopCount < maxLoops) {
+        setLoopCount(prevCount => prevCount + 1);
+        setTimeout(() => {
+          videoElement.play().catch(error => {
+            console.error("Video play failed:", error);
+            // Autoplay can be blocked by browsers, this is a common issue.
+          });
+        }, 1000); // 1-second delay
+      }
+    };
+
+    videoElement.addEventListener('ended', handleVideoEnd);
+
+    // Cleanup function
+    return () => {
+      videoElement.removeEventListener('ended', handleVideoEnd);
+    };
+  }, [loopCount]);
+
+
   return (
     <>
       <SectionContainer>
@@ -69,15 +98,17 @@ export default function AttachmentProgramPage() {
               This program is ideal for university and college students pursuing a diploma or degree in Electrical Engineering, Mechatronics, or a related field, who are required to complete an industrial attachment as part of their curriculum.
             </p>
           </div>
-          <div className="relative aspect-video rounded-lg overflow-hidden shadow-xl">
-            <Image
-              src="https://ik.imagekit.io/arlpx2025/TAP%202025%20Intro.jpg?updatedAt=1750853523673"
-              alt="An intern working on an electrical panel"
-              layout="fill"
-              objectFit="cover"
-              data-ai-hint="student learning"
-              priority
-            />
+          <div className="relative aspect-video rounded-lg overflow-hidden shadow-xl bg-black">
+            <video
+              ref={videoRef}
+              src="https://ik.imagekit.io/arlpx2025/Intro_2.mp4?updatedAt=1750854610734"
+              autoPlay
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </SectionContainer>

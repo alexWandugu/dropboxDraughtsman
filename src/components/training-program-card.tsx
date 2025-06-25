@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -60,8 +61,7 @@ export function TrainingProgramCard({ program }: TrainingProgramCardProps) {
       </CardContent>
       <CardFooter className="p-6 bg-muted/30">
         <Button asChild variant="default" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-          {/* In a real app, this would link to a detailed program page e.g. /training/${program.slug} */}
-          <Link href={`/training#${program.slug}`}> 
+          <Link href={`/training/${program.slug}`}> 
             Learn More <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>

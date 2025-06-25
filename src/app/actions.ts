@@ -4,6 +4,7 @@
 import { z } from 'zod';
 import { trainingRecommendation, type TrainingRecommendationInput } from '@/ai/flows/training-recommendation';
 import { firestore, collection, addDoc, serverTimestamp } from '@/lib/firebase';
+import { sendEmail } from '@/lib/email';
 
 // AI Recommendation Action
 export async function getTrainingRecommendationAction(input: TrainingRecommendationInput) {
@@ -62,6 +63,25 @@ export async function submitGuidanceForm(
       status: 'new',
     });
 
+    // Send email notification to admin
+    await sendEmail({
+      to: process.env.ADMIN_EMAIL || 'admin@example.com', // Fallback for safety
+      subject: 'New Project Guidance Request',
+      html: `
+        <h1>New Project Guidance Request</h1>
+        <p>A new request has been submitted through the website.</p>
+        <h2>Details:</h2>
+        <ul>
+          <li><strong>Name:</strong> ${parsed.data.name}</li>
+          <li><strong>Email:</strong> ${parsed.data.email}</li>
+          ${parsed.data.phone ? `<li><strong>Phone:</strong> ${parsed.data.phone}</li>` : ''}
+          ${parsed.data.company ? `<li><strong>Company:</strong> ${parsed.data.company}</li>` : ''}
+        </ul>
+        <h3>Message:</h3>
+        <p>${parsed.data.message}</p>
+      `,
+    });
+
     return { message: "Your request has been submitted successfully! We will get back to you soon.", success: true };
   } catch (error) {
     console.error("Error submitting guidance form:", error);
@@ -110,6 +130,27 @@ export async function submitSchedulingForm(
         ...parsed.data,
         createdAt: serverTimestamp(),
         status: 'pending',
+    });
+
+    // Send email notification to admin
+    await sendEmail({
+      to: process.env.ADMIN_EMAIL || 'admin@example.com',
+      subject: 'New Booking Request',
+      html: `
+        <h1>New Booking Request</h1>
+        <p>A new booking request has been submitted for scheduling.</p>
+        <h2>Details:</h2>
+        <ul>
+          <li><strong>Name:</strong> ${parsed.data.name}</li>
+          <li><strong>Email:</strong> ${parsed.data.email}</li>
+          ${parsed.data.phone ? `<li><strong>Phone:</strong> ${parsed.data.phone}</li>` : ''}
+          <li><strong>Service:</strong> ${parsed.data.service}</li>
+          <li><strong>Preferred Date:</strong> ${parsed.data.preferredDate}</li>
+          <li><strong>Preferred Time:</strong> ${parsed.data.preferredTime}</li>
+        </ul>
+        <h3>Notes:</h3>
+        <p>${parsed.data.notes || 'N/A'}</p>
+      `
     });
 
     return { message: "Booking request submitted successfully! We will confirm your session soon.", success: true };

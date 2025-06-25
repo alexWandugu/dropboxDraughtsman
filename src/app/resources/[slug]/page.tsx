@@ -87,6 +87,9 @@ export default async function ResourcePage({ params }: { params: { slug: string 
         .replace(/\n/g, '<br />')
     : '';
 
+  const isExternalLink = resource.downloadUrl?.startsWith('http');
+  const isVideo = resource.type === 'video';
+
   return (
     <SectionContainer>
       <div className="max-w-3xl mx-auto">
@@ -119,9 +122,14 @@ export default async function ResourcePage({ params }: { params: { slug: string 
         {resource.downloadUrl && (
           <div className="text-center mt-12">
              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                <Link href={resource.downloadUrl} target={resource.type === 'video' ? '_blank' : '_self'} download={resource.type !== 'video'}>
-                    {resource.type === 'video' ? <ExternalLink className="mr-2 h-5 w-5" /> : <Download className="mr-2 h-5 w-5" />}
-                    {resource.type === 'video' ? 'Watch Video on YouTube' : 'Download PDF Now'}
+                <Link
+                  href={resource.downloadUrl}
+                  target={isExternalLink || isVideo ? '_blank' : '_self'}
+                  download={!isExternalLink && !isVideo}
+                  rel={isExternalLink || isVideo ? "noopener noreferrer" : undefined}
+                >
+                  {(isExternalLink && !isVideo) || isVideo ? <ExternalLink className="mr-2 h-5 w-5" /> : <Download className="mr-2 h-5 w-5" />}
+                  {isVideo ? 'Watch Video on YouTube' : 'View Document'}
                 </Link>
             </Button>
           </div>

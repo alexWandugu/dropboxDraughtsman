@@ -52,7 +52,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Logo />
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
           {mainNavItems.map((item) => (
             <Link
               key={item.href}
@@ -101,7 +101,7 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button asChild className="hidden md:inline-flex bg-accent hover:bg-accent/90 text-accent-foreground">
+            <Button asChild className="hidden lg:inline-flex bg-accent hover:bg-accent/90 text-accent-foreground">
               <Link href="/login">
                 <LogInIcon className="mr-2 h-4 w-4"/>
                 Login / Register
@@ -109,7 +109,7 @@ export function Header() {
             </Button>
           )}
 
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">

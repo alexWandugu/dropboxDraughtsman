@@ -186,7 +186,7 @@ export const showcaseActivities: ShowcaseActivity[] = [
     id: 'sa-attachment',
     title: 'Industrial Attachment Program',
     description: 'A hands-on program where students experience the complete lifecycle of electrical panel creation, from initial design and manufacturing to final testing and commissioning.',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/training%20ad.jpeg?updatedAt=1750840125763',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/TAP%202025%20Intro.jpg?updatedAt=1750853523673',
     dataAihint: 'students workshop',
     category: 'Attachment Program',
     link: '/attachment-program',

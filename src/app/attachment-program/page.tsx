@@ -14,8 +14,8 @@ import Autoplay from 'embla-carousel-autoplay';
 
 const attachmentImages = [
   {
-    src: 'https://placehold.co/800x600.png',
-    alt: 'Students designing electrical schematics on a computer',
+    src: 'https://ik.imagekit.io/arlpx2025/TAP%202025%20Intro.jpg?updatedAt=1750853523673',
+    alt: 'Students design of the electrical schematics on Eplan Electric P8',
     hint: 'students designing'
   },
   {
@@ -25,7 +25,7 @@ const attachmentImages = [
   },
   {
     src: 'https://ik.imagekit.io/arlpx2025/student%20panel%20Kit.jpeg?updatedAt=1750843724581',
-    alt: 'Wiring components within a descrete control panel kit',
+    alt: 'Wiring components within a discrete control panel kit',
     hint: 'electrical wiring'
   },
   // {
@@ -71,7 +71,7 @@ export default function AttachmentProgramPage() {
           </div>
           <div className="relative aspect-video rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="https://placehold.co/600x400.png"
+              src="https://ik.imagekit.io/arlpx2025/TAP%202025%20Intro.jpg?updatedAt=1750853523673"
               alt="An intern working on an electrical panel"
               layout="fill"
               objectFit="cover"

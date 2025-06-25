@@ -68,8 +68,8 @@ export const resources: Resource[] = [
     content: 'This document provides a comprehensive walkthrough of the IEC 61439 standards for low-voltage switchgear and controlgear assemblies. Download the full PDF for detailed diagrams, checklists, and compliance requirements.',
     category: 'Standards',
     publishedDate: '2023-10-15',
-    imageUrl: 'https://placehold.co/400x300.png',
-    dataAihint: 'technical document',
+    imageUrl: 'https://storage.googleapis.com/maker-studio-5649a.appspot.com/prompt_images/e8c89b7b-60a6-42d4-a82f-2d7ac254b087.png',
+    dataAihint: 'switchgear controlgear',
   },
   {
     id: 'res2',

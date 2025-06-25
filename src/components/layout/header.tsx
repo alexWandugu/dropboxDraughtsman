@@ -1,11 +1,17 @@
-
 'use client';
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Menu, X, LogOut, UserCircle, LogInIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+  SheetHeader,
+  SheetTitle,
+} from '@/components/ui/sheet';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -119,15 +125,15 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-full max-w-xs bg-background p-6">
                 <div className="flex flex-col space-y-6">
-                  <div className="flex justify-between items-center">
-                  <Logo />
+                  <SheetHeader className="flex flex-row justify-between items-center text-left">
+                    <SheetTitle asChild><Logo /></SheetTitle>
                     <SheetClose asChild>
                       <Button variant="ghost" size="icon">
                         <X className="h-6 w-6" />
                         <span className="sr-only">Close menu</span>
                       </Button>
                     </SheetClose>
-                  </div>
+                  </SheetHeader>
                   <nav className="flex flex-col space-y-4">
                     {mainNavItems.map((item) => (
                       <SheetClose asChild key={item.href}>

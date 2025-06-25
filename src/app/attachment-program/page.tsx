@@ -1,4 +1,6 @@
 
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { SectionContainer } from '@/components/common/section-container';
@@ -8,6 +10,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import type { Metadata } from 'next';
+import React from 'react';
+import Autoplay from 'embla-carousel-autoplay';
 
 export const metadata: Metadata = {
   title: 'Industrial Attachment Program - Dropbox Draughtsman',
@@ -48,6 +52,10 @@ const keyLearnings = [
 ];
 
 export default function AttachmentProgramPage() {
+  const autoplayPlugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })
+  );
+
   return (
     <>
       <SectionContainer>
@@ -86,6 +94,7 @@ export default function AttachmentProgramPage() {
         </SectionTitle>
         <Carousel
           opts={{ align: "start", loop: true, }}
+          plugins={[autoplayPlugin.current]}
           className="w-full max-w-4xl mx-auto"
         >
           <CarouselContent>

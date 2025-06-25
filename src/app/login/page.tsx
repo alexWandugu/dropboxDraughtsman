@@ -240,73 +240,74 @@ export default function LoginPage() {
         Sign In / Register
       </SectionTitle>
       <div className="flex flex-col items-center gap-8">
-        {/* Phone Authentication Card */}
+        {/* Email/Password Card */}
         <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle className="text-2xl font-headline text-primary flex items-center">
-              <Smartphone className="mr-2 h-6 w-6" /> Sign In or Register with Phone
+                <Mail className="mr-2 h-6 w-6" /> Sign In or Register with Email
             </CardTitle>
-            <CardDescription>Enter your full name and phone number to receive an OTP.</CardDescription>
+            <CardDescription>Use your email and password to login or create an account.</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            {!isOtpSent ? (
-              <>
-                <div className="space-y-1">
-                  <Label htmlFor="fullNamePhone">Full Name</Label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                    <Input 
-                      id="fullNamePhone" 
-                      type="text" 
-                      placeholder="e.g. Jane Doe" 
-                      value={fullNamePhone}
-                      onChange={(e) => setFullNamePhone(e.target.value)}
-                      disabled={isLoading}
-                      className="pl-10"
-                    />
+          <Tabs defaultValue="email-login" className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="email-login"><LogIn className="mr-2 h-4 w-4" />Login</TabsTrigger>
+              <TabsTrigger value="email-register"><UserPlus className="mr-2 h-4 w-4" />Register</TabsTrigger>
+            </TabsList>
+            <TabsContent value="email-login">
+              <form onSubmit={handleEmailLoginSubmit(onEmailLogin)}>
+                <CardContent className="space-y-4 pt-6">
+                  <div className="space-y-1">
+                    <Label htmlFor="email-login">Email</Label>
+                    <Input id="email-login" type="email" placeholder="you@example.com" {...registerEmailLogin('emailLogin')} />
+                    {emailLoginErrors.emailLogin && <p className="text-sm text-destructive">{emailLoginErrors.emailLogin.message}</p>}
                   </div>
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="phone">Phone Number (e.g. +254712345678)</Label>
-                  <Input 
-                    id="phone" 
-                    type="tel" 
-                    placeholder="e.g. +254712345678" 
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    disabled={isLoading}
-                  />
-                </div>
-              </>
-            ) : (
-              <div className="space-y-1">
-                <Label htmlFor="otp">Enter OTP</Label>
-                <Input 
-                  id="otp" 
-                  type="text" 
-                  placeholder="Enter 6-digit OTP" 
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  maxLength={6}
-                  disabled={isLoading}
-                />
-              </div>
-            )}
-            <div ref={recaptchaContainerRef} id="recaptcha-container"></div>
-          </CardContent>
-          <CardFooter className="flex flex-col gap-4">
-            {!isOtpSent ? (
-              <Button onClick={handleSendOtp} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" disabled={isLoading || !phoneNumber.trim() || !fullNamePhone.trim()}>
-                {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <MessageSquare className="mr-2 h-4 w-4" />}
-                Send OTP
-              </Button>
-            ) : (
-              <Button onClick={handleVerifyOtp} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" disabled={isLoading || !otp.trim() || otp.length !== 6}>
-                {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <ShieldCheck className="mr-2 h-4 w-4" />}
-                Verify OTP & Sign In
-              </Button>
-            )}
-          </CardFooter>
+                  <div className="space-y-1">
+                    <Label htmlFor="password-login">Password</Label>
+                    <Input id="password-login" type="password" placeholder="••••••••" {...registerEmailLogin('passwordLogin')} />
+                    {emailLoginErrors.passwordLogin && <p className="text-sm text-destructive">{emailLoginErrors.passwordLogin.message}</p>}
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={isLoading}>
+                    {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <LogIn className="mr-2 h-4 w-4" />}
+                    Login with Email
+                  </Button>
+                </CardFooter>
+              </form>
+            </TabsContent>
+            <TabsContent value="email-register">
+                <form onSubmit={handleEmailRegisterSubmit(onEmailRegister)}>
+                  <CardContent className="space-y-4 pt-6">
+                    <div className="space-y-1">
+                      <Label htmlFor="name-register">Full Name</Label>
+                      <Input id="name-register" placeholder="John Doe" {...registerEmailRegister('fullNameRegister')} />
+                      {emailRegisterErrors.fullNameRegister && <p className="text-sm text-destructive">{emailRegisterErrors.fullNameRegister.message}</p>}
+                    </div>
+                    <div className="space-y-1">
+                      <Label htmlFor="email-register">Email</Label>
+                      <Input id="email-register" type="email" placeholder="you@example.com" {...registerEmailRegister('emailRegister')} />
+                      {emailRegisterErrors.emailRegister && <p className="text-sm text-destructive">{emailRegisterErrors.emailRegister.message}</p>}
+                    </div>
+                    <div className="space-y-1">
+                      <Label htmlFor="password-register">Password</Label>
+                      <Input id="password-register" type="password" placeholder="Choose a strong password" {...registerEmailRegister('passwordRegister')} />
+                      {emailRegisterErrors.passwordRegister && <p className="text-sm text-destructive">{emailRegisterErrors.passwordRegister.message}</p>}
+                    </div>
+                    <div className="space-y-1">
+                      <Label htmlFor="confirm-password-register">Confirm Password</Label>
+                      <Input id="confirm-password-register" type="password" placeholder="Re-enter your password" {...registerEmailRegister('confirmPasswordRegister')} />
+                      {emailRegisterErrors.confirmPasswordRegister && <p className="text-sm text-destructive">{emailRegisterErrors.confirmPasswordRegister.message}</p>}
+                    </div>
+                  </CardContent>
+                  <CardFooter>
+                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={isLoading}>
+                      {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <UserPlus className="mr-2 h-4 w-4" />}
+                      Register with Email
+                    </Button>
+                  </CardFooter>
+                </form>
+            </TabsContent>
+          </Tabs>
         </Card>
 
         <div className="w-full max-w-md text-center">
@@ -324,84 +325,83 @@ export default function LoginPage() {
           Sign in with Google
         </Button>
 
-        {/* Email/Password Accordion */}
+        {/* Phone Authentication Accordion */}
         <Accordion type="single" collapsible className="w-full max-w-md">
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="text-base hover:no-underline">
-                <div className="flex items-center gap-2">
-                    <Mail className="h-5 w-5 text-muted-foreground"/> Sign in or Register with Email
-                </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <Card className="border-none shadow-none">
-                <CardHeader>
-                  <CardTitle className="text-xl font-headline text-primary">Email & Password</CardTitle>
-                  <CardDescription>Use your email and password to login or create an account.</CardDescription>
-                </CardHeader>
-                <Tabs defaultValue="email-login" className="w-full">
-                  <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="email-login"><LogIn className="mr-2 h-4 w-4" />Login</TabsTrigger>
-                    <TabsTrigger value="email-register"><UserPlus className="mr-2 h-4 w-4" />Register</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="email-login">
-                    <form onSubmit={handleEmailLoginSubmit(onEmailLogin)}>
-                      <CardContent className="space-y-4 pt-6">
-                        <div className="space-y-1">
-                          <Label htmlFor="email-login">Email</Label>
-                          <Input id="email-login" type="email" placeholder="you@example.com" {...registerEmailLogin('emailLogin')} />
-                          {emailLoginErrors.emailLogin && <p className="text-sm text-destructive">{emailLoginErrors.emailLogin.message}</p>}
-                        </div>
-                        <div className="space-y-1">
-                          <Label htmlFor="password-login">Password</Label>
-                          <Input id="password-login" type="password" placeholder="••••••••" {...registerEmailLogin('passwordLogin')} />
-                          {emailLoginErrors.passwordLogin && <p className="text-sm text-destructive">{emailLoginErrors.passwordLogin.message}</p>}
-                        </div>
-                      </CardContent>
-                      <CardFooter>
-                        <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={isLoading}>
-                          {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <LogIn className="mr-2 h-4 w-4" />}
-                          Login with Email
-                        </Button>
-                      </CardFooter>
-                    </form>
-                  </TabsContent>
-                  <TabsContent value="email-register">
-                     <form onSubmit={handleEmailRegisterSubmit(onEmailRegister)}>
-                        <CardContent className="space-y-4 pt-6">
-                          <div className="space-y-1">
-                            <Label htmlFor="name-register">Full Name</Label>
-                            <Input id="name-register" placeholder="John Doe" {...registerEmailRegister('fullNameRegister')} />
-                            {emailRegisterErrors.fullNameRegister && <p className="text-sm text-destructive">{emailRegisterErrors.fullNameRegister.message}</p>}
-                          </div>
-                          <div className="space-y-1">
-                            <Label htmlFor="email-register">Email</Label>
-                            <Input id="email-register" type="email" placeholder="you@example.com" {...registerEmailRegister('emailRegister')} />
-                            {emailRegisterErrors.emailRegister && <p className="text-sm text-destructive">{emailRegisterErrors.emailRegister.message}</p>}
-                          </div>
-                          <div className="space-y-1">
-                            <Label htmlFor="password-register">Password</Label>
-                            <Input id="password-register" type="password" placeholder="Choose a strong password" {...registerEmailRegister('passwordRegister')} />
-                            {emailRegisterErrors.passwordRegister && <p className="text-sm text-destructive">{emailRegisterErrors.passwordRegister.message}</p>}
-                          </div>
-                          <div className="space-y-1">
-                            <Label htmlFor="confirm-password-register">Confirm Password</Label>
-                            <Input id="confirm-password-register" type="password" placeholder="Re-enter your password" {...registerEmailRegister('confirmPasswordRegister')} />
-                            {emailRegisterErrors.confirmPasswordRegister && <p className="text-sm text-destructive">{emailRegisterErrors.confirmPasswordRegister.message}</p>}
-                          </div>
+            <AccordionItem value="item-1">
+                <AccordionTrigger className="text-base hover:no-underline">
+                    <div className="flex items-center gap-2">
+                        <Smartphone className="h-5 w-5 text-muted-foreground"/> Sign in or Register with Phone
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                    <Card className="border-none shadow-none">
+                        <CardHeader>
+                            <CardDescription>Enter your full name and phone number to receive an OTP.</CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-4 pt-4">
+                            {!isOtpSent ? (
+                            <>
+                                <div className="space-y-1">
+                                <Label htmlFor="fullNamePhone">Full Name</Label>
+                                <div className="relative">
+                                    <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                                    <Input 
+                                    id="fullNamePhone" 
+                                    type="text" 
+                                    placeholder="e.g. Jane Doe" 
+                                    value={fullNamePhone}
+                                    onChange={(e) => setFullNamePhone(e.target.value)}
+                                    disabled={isLoading}
+                                    className="pl-10"
+                                    />
+                                </div>
+                                </div>
+                                <div className="space-y-1">
+                                <Label htmlFor="phone">Phone Number (e.g. +254712345678)</Label>
+                                <Input 
+                                    id="phone" 
+                                    type="tel" 
+                                    placeholder="e.g. +254712345678" 
+                                    value={phoneNumber}
+                                    onChange={(e) => setPhoneNumber(e.target.value)}
+                                    disabled={isLoading}
+                                />
+                                </div>
+                            </>
+                            ) : (
+                            <div className="space-y-1">
+                                <Label htmlFor="otp">Enter OTP</Label>
+                                <Input 
+                                id="otp" 
+                                type="text" 
+                                placeholder="Enter 6-digit OTP" 
+                                value={otp}
+                                onChange={(e) => setOtp(e.target.value)}
+                                maxLength={6}
+                                disabled={isLoading}
+                                />
+                            </div>
+                            )}
+                            <div ref={recaptchaContainerRef} id="recaptcha-container"></div>
                         </CardContent>
-                        <CardFooter>
-                          <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={isLoading}>
-                            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <UserPlus className="mr-2 h-4 w-4" />}
-                            Register with Email
-                          </Button>
+                        <CardFooter className="flex flex-col gap-4">
+                            {!isOtpSent ? (
+                            <Button onClick={handleSendOtp} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" disabled={isLoading || !phoneNumber.trim() || !fullNamePhone.trim()}>
+                                {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <MessageSquare className="mr-2 h-4 w-4" />}
+                                Send OTP
+                            </Button>
+                            ) : (
+                            <Button onClick={handleVerifyOtp} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" disabled={isLoading || !otp.trim() || otp.length !== 6}>
+                                {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <ShieldCheck className="mr-2 h-4 w-4" />}
+                                Verify OTP & Sign In
+                            </Button>
+                            )}
                         </CardFooter>
-                      </form>
-                  </TabsContent>
-                </Tabs>
-              </Card>
-            </AccordionContent>
-          </AccordionItem>
+                    </Card>
+                </AccordionContent>
+            </AccordionItem>
         </Accordion>
+
 
         {/* General Error Display */}
         {error && (
@@ -415,4 +415,3 @@ export default function LoginPage() {
     </SectionContainer>
   );
 }
-

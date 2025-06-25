@@ -9,14 +9,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ArrowRight, CheckCircle } from 'lucide-react';
-import type { Metadata } from 'next';
 import React from 'react';
 import Autoplay from 'embla-carousel-autoplay';
-
-export const metadata: Metadata = {
-  title: 'Industrial Attachment Program - Dropbox Draughtsman',
-  description: 'Gain hands-on experience in electrical panel design, manufacturing, and testing with our comprehensive industrial attachment program.',
-};
 
 const attachmentImages = [
   {

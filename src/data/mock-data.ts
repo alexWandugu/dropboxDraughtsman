@@ -3,9 +3,9 @@ import type { TrainingProgram, Instructor, Resource, Testimonial, ShowcaseActivi
 import { Zap, CircuitBoard, Lightbulb, FileText, Download, Video, Star, Users, GraduationCap, BookOpen, MessageCircle, CalendarDays, DraftingCompass, Settings, SlidersHorizontal, Home, Annoyed } from 'lucide-react';
 
 export const instructors: Instructor[] = [
-  { id: 'inst1', name: 'Eng. Jane Doe', bio: 'Lead Electrical Engineer with 15+ years of experience in industrial automation and panel design. Certified trainer for Siemens and Schneider Electric systems.', imageUrl: 'https://placehold.co/100x100.png', dataAihint: 'engineer portrait', specialization: 'Industrial Automation' ,},
-  { id: 'inst2', name: 'Dr. John Smith', bio: 'PhD in Electrical Engineering, specializing in renewable energy systems and power distribution. Published author and conference speaker.', imageUrl: 'https://placehold.co/100x100.png', dataAihint: 'academic portrait', specialization: 'Renewable Energy',},
-  { id: 'inst3', name: 'Alice Wanjiru', bio: 'Expert in CAD software for electrical design (AutoCAD Electrical, EPLAN). 10 years of experience in creating detailed schematics and layouts.', imageUrl: 'https://placehold.co/100x100.png', dataAihint: 'designer portrait', specialization: 'CAD Design', },
+  { id: 'inst1', name: 'Eng. Jane Doe', bio: 'Lead Electrical Engineer with 15+ years of experience in industrial automation and panel design. Certified trainer for Siemens and Schneider Electric systems.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'engineer portrait', specialization: 'Industrial Automation' ,},
+  { id: 'inst2', name: 'Dr. John Smith', bio: 'PhD in Electrical Engineering, specializing in renewable energy systems and power distribution. Published author and conference speaker.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'academic portrait', specialization: 'Renewable Energy',},
+  { id: 'inst3', name: 'Alice Wanjiru', bio: 'Expert in CAD software for electrical design (AutoCAD Electrical, EPLAN). 10 years of experience in creating detailed schematics and layouts.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'designer portrait', specialization: 'CAD Design', },
 ];
 
 export const trainingPrograms: TrainingProgram[] = [
@@ -20,7 +20,7 @@ export const trainingPrograms: TrainingProgram[] = [
     price: 'KES 50,000',
     instructors: [instructors[0], instructors[2]],
     icon: CircuitBoard,
-    image: 'https://placehold.co/600x400.png',
+    image: 'https://ik.imagekit.io/arlpx2025/program_placeholder_600x400.png',
     dataAihint: 'electrical panel',
     learnings: ['IEC standards compliance', 'Component selection & sizing', 'Control panel wiring', 'Troubleshooting techniques']
   },
@@ -35,7 +35,7 @@ export const trainingPrograms: TrainingProgram[] = [
     price: 'KES 35,000',
     instructors: [instructors[2]],
     icon: DraftingCompass,
-    image: 'https://placehold.co/600x400.png',
+    image: 'https://ik.imagekit.io/arlpx2025/program_placeholder_600x400.png',
     dataAihint: 'software interface',
     learnings: ['Schematic design', 'Panel layout creation', 'PLC I/O drawings', 'Report generation']
   },
@@ -50,7 +50,7 @@ export const trainingPrograms: TrainingProgram[] = [
     price: 'KES 65,000',
     instructors: [instructors[1]],
     icon: Zap,
-    image: 'https://placehold.co/600x400.png',
+    image: 'https://ik.imagekit.io/arlpx2025/program_placeholder_600x400.png',
     dataAihint: 'power systems',
     learnings: ['Power and Control system components', 'Site assessment', 'System sizing and design', 'Installation, commissioning & Troublesh0oting']
   },
@@ -113,7 +113,7 @@ Always keep your final schematics, layout drawings, and a bill of materials with
 By following these tips, you can build electrical panels that are not only functional and reliable but also safe and easy to maintain.`,
     category: 'Best Practices',
     publishedDate: '2023-11-01',
-    imageUrl: 'https://placehold.co/400x300.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/resource_placeholder_400x300.png',
     dataAihint: 'workshop tools',
   },
   {
@@ -127,7 +127,7 @@ By following these tips, you can build electrical panels that are not only funct
     content: 'This video tutorial provides a step-by-step guide to setting up a basic Variable Frequency Drive (VFD) for motor control. Follow along to understand the key parameters and configuration steps. Click the link to watch the full video on YouTube.',
     category: 'Tutorials',
     publishedDate: '2023-09-20',
-    imageUrl: 'https://placehold.co/400x300.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/resource_placeholder_400x300.png',
     dataAihint: 'electrical component',
   },
    {
@@ -141,7 +141,7 @@ By following these tips, you can build electrical panels that are not only funct
     content: 'Access the complete technical datasheet for the Circuit Breaker Model XYZ-2000. The document includes detailed specifications, performance curves, dimensional drawings, and application notes.',
     category: 'Components',
     publishedDate: '2024-01-05',
-    imageUrl: 'https://placehold.co/400x300.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/resource_placeholder_400x300.png',
     dataAihint: 'circuit breaker',
   },
 ];
@@ -153,9 +153,9 @@ export const testimonials: Testimonial[] = [
     company: 'Baraka Manufacturing Ltd.',
     testimonial: 'Dropbox Draughtsman\'s panel design training significantly improved our team\'s skills. We\'ve seen a 20% reduction in design errors and faster project turnaround. Highly recommended!',
     projectTitle: 'Team Skill Enhancement Program',
-    clientImageUrl: 'https://placehold.co/80x80.png',
+    clientImageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_client_placeholder_80x80.png',
     dataAihint: 'company logo',
-    imageUrl: 'https://placehold.co/600x400.png', 
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_project_placeholder_600x400.png', 
     dataAihintSecondary: 'factory machinery',
   },
   {
@@ -164,9 +164,9 @@ export const testimonials: Testimonial[] = [
     company: 'GreenTech Solutions',
     testimonial: 'The expert guidance provided by Dropbox Draughtsman was invaluable for our new solar installation project. Their expertise helped us optimize the design for maximum efficiency and cost savings.',
     projectTitle: 'Solar Farm Design Guidance',
-    clientImageUrl: 'https://placehold.co/80x80.png',
+    clientImageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_client_placeholder_80x80.png',
     dataAihint: 'person portrait',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_project_placeholder_600x400.png',
     dataAihintSecondary: 'solar farm',
   },
   {
@@ -174,9 +174,9 @@ export const testimonials: Testimonial[] = [
     clientName: 'David Otieno',
     company: 'OtiConnect Electricals',
     testimonial: 'As a small business owner, the resources Dropbox Draughtsman provides are gold. The downloadable guides on panel building have been a fantastic reference for my team.',
-    clientImageUrl: 'https://placehold.co/80x80.png',
+    clientImageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_client_placeholder_80x80.png',
     dataAihint: 'person smiling',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/testimonial_project_placeholder_600x400.png',
     dataAihintSecondary: 'electrical workshop',
   },
 ];
@@ -186,7 +186,7 @@ export const showcaseActivities: ShowcaseActivity[] = [
     id: 'sa1',
     title: 'Advanced Panel Design Workshop',
     description: 'Our latest workshop focusing on IEC 61439 compliance and modern panel building techniques.',
-    imageUrl: 'https://placehold.co/800x450.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/showcase_placeholder_800x450.png',
     dataAihint: 'workshop training',
     category: 'Ongoing Program',
     link: '/training#panel-design-masterclass',
@@ -195,7 +195,7 @@ export const showcaseActivities: ShowcaseActivity[] = [
     id: 'sa2',
     title: 'E-CAD Essentials Course Launch',
     description: 'Now enrolling for our popular E-CAD course using EPlan. Limited seats available!',
-    imageUrl: 'https://placehold.co/800x450.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/showcase_placeholder_800x450.png',
     dataAihint: 'computer software',
     category: 'New Course',
     link: '/training#E-CAD-essentials',
@@ -204,7 +204,7 @@ export const showcaseActivities: ShowcaseActivity[] = [
     id: 'sa3',
     title: 'Kenya Power Systems Seminar Highlights',
     description: 'Successful seminar on power system design and installation best practices. Thanks to all attendees!',
-    imageUrl: 'https://placehold.co/800x450.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/showcase_placeholder_800x450.png',
     dataAihint: 'seminar presentation',
     category: 'Recent Event',
   },
@@ -212,7 +212,7 @@ export const showcaseActivities: ShowcaseActivity[] = [
     id: 'sa4',
     title: 'Free Guidance Week',
     description: 'Book a free 30-minute guidance session with our experts this month. Limited slots!',
-    imageUrl: 'https://placehold.co/800x450.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/showcase_placeholder_800x450.png',
     dataAihint: 'team meeting',
     category: 'Special Offer',
     link: '/guidance',

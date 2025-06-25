@@ -3,7 +3,7 @@ import type { TrainingProgram, Instructor, Resource, Testimonial, ShowcaseActivi
 import { Zap, CircuitBoard, Lightbulb, FileText, Download, Video, Star, Users, GraduationCap, BookOpen, MessageCircle, CalendarDays, DraftingCompass, Settings, SlidersHorizontal, Home, Annoyed } from 'lucide-react';
 
 export const instructors: Instructor[] = [
-  { id: 'inst1', name: 'Eng. Jane Doe', bio: 'Lead Electrical Engineer with 15+ years of experience in industrial automation and panel design. Certified trainer for Siemens and Schneider Electric systems.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'engineer portrait', specialization: 'Industrial Automation' ,},
+  { id: 'inst1', name: 'G Eng. Edgar K. MUTICHI', bio: 'Lead Electrical Engineer with experience in industrial automation and panel design.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'engineer portrait', specialization: 'Industrial Automation' ,},
   { id: 'inst2', name: 'Dr. John Smith', bio: 'PhD in Electrical Engineering, specializing in renewable energy systems and power distribution. Published author and conference speaker.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'academic portrait', specialization: 'Renewable Energy',},
   { id: 'inst3', name: 'Alice Wanjiru', bio: 'Expert in CAD software for electrical design (AutoCAD Electrical, EPLAN). 10 years of experience in creating detailed schematics and layouts.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'designer portrait', specialization: 'CAD Design', },
 ];
@@ -20,7 +20,7 @@ export const trainingPrograms: TrainingProgram[] = [
     price: 'KES 50,000',
     instructors: [instructors[0], instructors[2]],
     icon: CircuitBoard,
-    image: 'https://ik.imagekit.io/arlpx2025/program_placeholder_600x400.png',
+    image: 'https://ik.imagekit.io/arlpx2025/EPanel-Design-MasterClass.jpg?updatedAt=1750836260181',
     dataAihint: 'electrical panel',
     learnings: ['IEC standards compliance', 'Component selection & sizing', 'Control panel wiring', 'Troubleshooting techniques']
   },
@@ -35,7 +35,7 @@ export const trainingPrograms: TrainingProgram[] = [
     price: 'KES 35,000',
     instructors: [instructors[2]],
     icon: DraftingCompass,
-    image: 'https://ik.imagekit.io/arlpx2025/program_placeholder_600x400.png',
+    image: 'https://ik.imagekit.io/arlpx2025/E-Cad%20Essentials.jpg?updatedAt=1750835534460',
     dataAihint: 'software interface',
     learnings: ['Schematic design', 'Panel layout creation', 'PLC I/O drawings', 'Report generation']
   },
@@ -50,7 +50,7 @@ export const trainingPrograms: TrainingProgram[] = [
     price: 'KES 65,000',
     instructors: [instructors[1]],
     icon: Zap,
-    image: 'https://ik.imagekit.io/arlpx2025/program_placeholder_600x400.png',
+    image: 'https://ik.imagekit.io/arlpx2025/P&C%20Systems%20Design.jpg?updatedAt=1750833782969',
     dataAihint: 'power systems',
     learnings: ['Power and Control system components', 'Site assessment', 'System sizing and design', 'Installation, commissioning & Troublesh0oting']
   },
@@ -68,7 +68,7 @@ export const resources: Resource[] = [
     content: 'This document provides a comprehensive walkthrough of the IEC 61439 standards for low-voltage switchgear and controlgear assemblies. Download the full PDF for detailed diagrams, checklists, and compliance requirements.',
     category: 'Standards',
     publishedDate: '2023-10-15',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/IEC.jpg?updatedAt=1750832138122',
+    imageUrl: 'https://i.imgur.com/8a1wM0r.png',
     dataAihint: 'electrical standards',
   },
   {
@@ -113,7 +113,7 @@ Always keep your final schematics, layout drawings, and a bill of materials with
 By following these tips, you can build electrical panels that are not only functional and reliable but also safe and easy to maintain.`,
     category: 'Best Practices',
     publishedDate: '2023-11-01',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/resource_placeholder_400x300.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/PanelTips.jpg?updatedAt=1750833285443',
     dataAihint: 'workshop tools',
   },
   {
@@ -183,10 +183,19 @@ export const testimonials: Testimonial[] = [
 
 export const showcaseActivities: ShowcaseActivity[] = [
   {
+    id: 'sa-attachment',
+    title: 'Industrial Attachment Program',
+    description: 'A hands-on program where students experience the complete lifecycle of electrical panel creation, from initial design and manufacturing to final testing and commissioning.',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/students_workshop.jpg',
+    dataAihint: 'students workshop',
+    category: 'Attachment Program',
+    link: '/attachment-program',
+  },
+  {
     id: 'sa1',
     title: 'Advanced Panel Design Workshop',
     description: 'Our latest workshop focusing on IEC 61439 compliance and modern panel building techniques.',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/showcase_placeholder_800x450.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/EPanel-Design-MasterClass.jpg?updatedAt=1750836260181',
     dataAihint: 'workshop training',
     category: 'Ongoing Program',
     link: '/training#panel-design-masterclass',
@@ -195,18 +204,10 @@ export const showcaseActivities: ShowcaseActivity[] = [
     id: 'sa2',
     title: 'E-CAD Essentials Course Launch',
     description: 'Now enrolling for our popular E-CAD course using EPlan. Limited seats available!',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/showcase_placeholder_800x450.png',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/E-Cad%20Essentials.jpg?updatedAt=1750835534460',
     dataAihint: 'computer software',
     category: 'New Course',
     link: '/training#E-CAD-essentials',
-  },
-  {
-    id: 'sa3',
-    title: 'Kenya Power Systems Seminar Highlights',
-    description: 'Successful seminar on power system design and installation best practices. Thanks to all attendees!',
-    imageUrl: 'https://ik.imagekit.io/arlpx2025/showcase_placeholder_800x450.png',
-    dataAihint: 'seminar presentation',
-    category: 'Recent Event',
   },
   {
     id: 'sa4',

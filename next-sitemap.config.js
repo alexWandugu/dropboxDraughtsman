@@ -4,4 +4,6 @@ module.exports = {
     generateRobotsTxt: true, // also generates robots.txt
     sitemapSize: 5000,
   };
+
+  // "postbuild": "next-sitemap" in package.json
   

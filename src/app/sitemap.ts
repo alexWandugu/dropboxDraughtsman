@@ -33,14 +33,14 @@ async function getResourceSlugs(): Promise<{ slug: string }[]> {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // IMPORTANT: Set your production domain in your environment variables
   // (e.g., in a .env.local file) as NEXT_PUBLIC_SITE_URL
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.dropboxdraughtsman.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.dropboxdraughtsman.vercel.app';
   const lastModified = new Date();
 
   const staticRoutes = [
     '/',
     '/about',
     '/attachment-program',
-    '/consultation',
+    // '/consultation',
     '/guidance',
     '/login',
     '/privacy',

@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dropboxdraughtsman.vercel.app';
-  const logoUrl = `${siteUrl}/imageL.png`;
+  const logoUrl = `${siteUrl}/logoDark.png`;
 
   const structuredData = {
     "@context": "https://schema.org",

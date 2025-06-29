@@ -23,7 +23,7 @@ export default function RootLayout({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Dropbox Draughtsman Designs",
+    "name": "Dropbox Draughtsman",
     "url": siteUrl,
     "logo": logoUrl,
   };

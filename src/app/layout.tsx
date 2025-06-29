@@ -17,11 +17,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.dropboxdraughtsman.com';
-  const logoUrl = `${siteUrl}/logoDark.png`;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dropboxdraughtsman.vercel.app';
+  const logoUrl = `${siteUrl}/imageL.png`;
 
   const structuredData = {
-    "@context": "https://dropboxdraughtsman/",
+    "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Dropbox Draughtsman Designs",
     "url": siteUrl,

@@ -17,6 +17,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.dropboxdraughtsman.com';
+  const logoUrl = `${siteUrl}/imageL.png`;
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Dropbox Draughtsman",
+    "url": siteUrl,
+    "logo": logoUrl,
+  };
+
   return (
     <html lang="en" className="dark">
       <head>
@@ -26,6 +37,10 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <meta name="theme-color" content="#7DF9FF" />
         <meta name="google-site-verification" content="nWyaLpqcFzLPe_B2NYecJZoOQXQii5n6-sNCkgfp_T0" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </head>
       <body className="font-body bg-background text-foreground flex flex-col min-h-screen">
         <AuthProvider>

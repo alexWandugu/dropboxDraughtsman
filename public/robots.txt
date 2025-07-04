@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://dropboxdraughtsman.vercel.app/
-
-# Sitemaps
-Sitemap: https://dropboxdraughtsman.vercel.app/sitemap.xml

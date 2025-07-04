@@ -39,21 +39,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
     '/',
     '/about',
-    '/attachment-program',
+    // '/attachment-program',
     // '/consultation',
-    '/guidance',
-    '/login',
-    '/privacy',
+    // '/guidance',
+    // '/login',
+    // '/privacy',
     '/resources',
-    '/schedule',
-    '/terms',
-    '/testimonials',
+    // '/schedule',
+    // '/terms',
+    // '/testimonials',
     '/training',
   ].map(route => ({
     url: `${siteUrl}${route}`,
     lastModified,
     priority: route === '/' ? 1.0 : 0.8,
-    changeFrequency: 'weekly' as 'weekly',
+    changeFrequency: 'daily' as 'daily',
   }));
 
   const trainingProgramSlugs = await getTrainingProgramSlugs();

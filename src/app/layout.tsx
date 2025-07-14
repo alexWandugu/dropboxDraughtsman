@@ -36,7 +36,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <meta name="theme-color" content="#7DF9FF" />
-        <meta name="google-site-verification" content="nWyaLpqcFzLPe_B2NYecJZoOQXQii5n6-sNCkgfp_T0" />
+        <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_CODE_HERE" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

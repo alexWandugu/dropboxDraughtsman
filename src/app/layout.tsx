@@ -6,10 +6,16 @@ import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from '@/context/auth-context';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dropboxdraughtsman.vercel.app';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Dropbox Draughtsman - Electrical Design Training & Consultation',
   description: 'Expert electrical design training, consultation, and resources in Kenya by Dropbox Draughtsman.',
   manifest: '/manifest.json',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function RootLayout({
@@ -17,7 +23,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dropboxdraughtsman.vercel.app';
   const logoUrl = `${siteUrl}/logoDark.png`;
 
   const structuredData = {
@@ -36,7 +41,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <meta name="theme-color" content="#7DF9FF" />
-        <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_CODE_HERE" />
+        <meta name="google-site-verification" content="nWyaLpqcFzLPe_B2NYecJZoOQXQii5n6-sNCkgfp_T0" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

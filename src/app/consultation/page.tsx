@@ -6,6 +6,9 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 export const metadata = {
   title: 'Consultation - Dropbox Draughtsman',
   description: 'Request expert consultation for your electrical design projects. Contact Dropbox Draughtsman for personalized advice and solutions.',
+  alternates: {
+    canonical: '/consultation',
+  },
 };
 
 export default function ConsultationPage() {

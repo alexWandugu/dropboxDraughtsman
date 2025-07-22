@@ -6,6 +6,9 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 export const metadata = {
   title: 'Expert Guidance - Dropbox Draughtsman',
   description: 'Request expert guidance for your electrical design projects. Contact Dropbox Draughtsman for personalized advice and solutions.',
+  alternates: {
+    canonical: '/guidance',
+  },
 };
 
 export default function GuidancePage() {

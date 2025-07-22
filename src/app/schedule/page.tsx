@@ -5,6 +5,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Schedule a Session - Dropbox Draughtsman',
   description: 'Book your training session or project guidance with Dropbox Draughtsman. Use our scheduling system to find a convenient time.',
+  alternates: {
+    canonical: '/schedule',
+  },
 };
 
 export default function SchedulePage() {

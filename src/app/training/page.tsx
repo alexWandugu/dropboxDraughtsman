@@ -10,6 +10,9 @@ import { trainingPrograms as mockTrainingPrograms } from '@/data/mock-data';
 export const metadata = {
   title: 'Training Programs - Dropbox Draughtsman',
   description: "Explore our comprehensive electrical design training programs. Enhance your skills with expert-led courses in panel design, E-CAD design, power and control systems, and more.",
+  alternates: {
+    canonical: '/training',
+  },
 };
 
 async function getTrainingPrograms(): Promise<TrainingProgram[]> {

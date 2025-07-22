@@ -70,6 +70,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${resource.title} - Dropbox Draughtsman`,
     description: resource.description,
+    alternates: {
+      canonical: `/resources/${resource.slug}`,
+    },
   };
 }
 

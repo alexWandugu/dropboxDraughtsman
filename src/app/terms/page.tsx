@@ -5,6 +5,9 @@ import { SectionTitle } from '@/components/common/section-title';
 export const metadata = {
   title: 'Terms of Service - Dropbox Draughtsman',
   description: 'Read the Dropbox Draughtsman Terms of Service. By using our services, you agree to these terms.',
+  alternates: {
+    canonical: '/terms',
+  },
 };
 
 export default function TermsPage() {

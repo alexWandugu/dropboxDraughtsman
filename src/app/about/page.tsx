@@ -6,6 +6,9 @@ import { Users, Zap, Lightbulb } from 'lucide-react';
 export const metadata = {
   title: 'About Us - Dropbox Draughtsman',
   description: 'Learn more about Dropbox Draughtsman, our mission, vision, and the team dedicated to advancing electrical design expertise in Kenya.',
+  alternates: {
+    canonical: '/about',
+  },
 };
 
 export default function AboutPage() {

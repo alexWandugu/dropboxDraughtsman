@@ -4,6 +4,9 @@ import { SectionTitle } from '@/components/common/section-title';
 export const metadata = {
   title: 'Privacy Policy - Dropbox Draughtsman',
   description: 'Read the Dropbox Draughtsman Privacy Policy to understand how we collect, use, and protect your personal information.',
+  alternates: {
+    canonical: '/privacy',
+  },
 };
 
 export default function PrivacyPage() {

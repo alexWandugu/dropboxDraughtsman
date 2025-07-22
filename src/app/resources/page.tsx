@@ -9,6 +9,9 @@ import { firestore, collection, getDocs } from '@/lib/firebase';
 export const metadata = {
   title: 'Resource Library - Dropbox Draughtsman',
   description: 'Access our library of electrical design resources, including guides, articles, datasheets, and video tutorials on panel building, IEC standards, and more.',
+  alternates: {
+    canonical: '/resources',
+  },
 };
 
 async function getResources(): Promise<Resource[]> {

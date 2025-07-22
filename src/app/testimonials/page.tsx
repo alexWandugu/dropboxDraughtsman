@@ -9,6 +9,9 @@ import { firestore, collection, getDocs } from '@/lib/firebase';
 export const metadata = {
   title: 'Testimonials - Dropbox Draughtsman',
   description: 'Read what our clients say about Dropbox Draughtsman. Discover success stories and testimonials from businesses and professionals who have benefited from our electrical design training and consultation services.',
+  alternates: {
+    canonical: '/testimonials',
+  },
 };
 
 async function getTestimonials(): Promise<Testimonial[]> {

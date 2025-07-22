@@ -33,11 +33,11 @@ const attachmentImages = [
     alt: 'Transition to controller-based control panel kit',
     hint: 'PLC wiring & Programming'
   },
-  // {
-  //   src: 'https://placehold.co/800x600.png',
-  //   alt: 'Testing a completed electrical panel with diagnostic tools',
-  //   hint: 'electrical testing'
-  // },
+  {
+    src: 'https://ik.imagekit.io/arlpx2025/Site-Visit-Highlight.jpg?updatedAt=1753167195748',
+    alt: 'Students on a site visit to an industrial facility',
+    hint: 'industrial site visit'
+  },
 ];
 
 const keyLearnings = [

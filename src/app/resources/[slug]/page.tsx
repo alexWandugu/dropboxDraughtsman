@@ -73,6 +73,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
+function getYouTubeVideoId(url: string): string | null {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+}
+
 
 export default async function ResourcePage({ params }: { params: { slug: string } }) {
   const resource = await getResourceBySlug(params.slug);
@@ -89,6 +95,7 @@ export default async function ResourcePage({ params }: { params: { slug: string 
 
   const isExternalLink = resource.downloadUrl?.startsWith('http');
   const isVideo = resource.type === 'video';
+  const videoId = isVideo && resource.downloadUrl ? getYouTubeVideoId(resource.downloadUrl) : null;
 
   return (
     <SectionContainer>
@@ -100,7 +107,18 @@ export default async function ResourcePage({ params }: { params: { slug: string 
           <p className="text-sm text-muted-foreground mt-2">Published on: {new Date(resource.publishedDate).toLocaleDateString()}</p>
         </div>
         
-        {resource.imageUrl && (
+        {isVideo && videoId ? (
+          <div className="relative aspect-video rounded-lg overflow-hidden shadow-xl mb-12 bg-black">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src={`https://www.youtube.com/embed/${videoId}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        ) : resource.imageUrl && (
           <div className="relative aspect-video rounded-lg overflow-hidden shadow-xl mb-12">
             <Image 
               src={resource.imageUrl}
@@ -118,18 +136,29 @@ export default async function ResourcePage({ params }: { params: { slug: string 
              <div dangerouslySetInnerHTML={{ __html: formattedContent }} />
           </article>
         )}
-
-        {resource.downloadUrl && (
+        
+        {resource.downloadUrl && !videoId && (
           <div className="text-center mt-12">
              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
                 <Link
                   href={resource.downloadUrl}
-                  target={isExternalLink || isVideo ? '_blank' : '_self'}
-                  download={!isExternalLink && !isVideo}
-                  rel={isExternalLink || isVideo ? "noopener noreferrer" : undefined}
+                  target={isExternalLink ? '_blank' : '_self'}
+                  download={!isExternalLink}
+                  rel={isExternalLink ? "noopener noreferrer" : undefined}
                 >
-                  {(isExternalLink && !isVideo) || isVideo ? <ExternalLink className="mr-2 h-5 w-5" /> : <Download className="mr-2 h-5 w-5" />}
-                  {isVideo ? 'Watch Video on YouTube' : 'View Document'}
+                  {isExternalLink ? <ExternalLink className="mr-2 h-5 w-5" /> : <Download className="mr-2 h-5 w-5" />}
+                  {'View Document'}
+                </Link>
+            </Button>
+          </div>
+        )}
+        
+        {resource.downloadUrl && isVideo && !videoId && (
+           <div className="text-center mt-12">
+             <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+                <Link href={resource.downloadUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-5 w-5" />
+                  Watch Video
                 </Link>
             </Button>
           </div>

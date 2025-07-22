@@ -69,3 +69,16 @@ export interface ShowcaseActivity {
   link?: string;
   category: string;
 }
+
+export interface Project {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  imageUrl: string;
+  dataAihint: string;
+  category: 'Completed Project' | 'Event' | 'Community Initiative';
+  date: string; // e.g., "Completed: January 2024" or "Held: March 2024"
+  tags: string[];
+  details?: string; // For a detailed project page if needed in the future
+}

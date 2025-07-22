@@ -1,6 +1,6 @@
 
-import type { TrainingProgram, Instructor, Resource, Testimonial, ShowcaseActivity } from '@/types';
-import { Zap, CircuitBoard, Lightbulb, FileText, Download, Video, Star, Users, GraduationCap, BookOpen, MessageCircle, CalendarDays, DraftingCompass, Settings, SlidersHorizontal, Home, Annoyed } from 'lucide-react';
+import type { TrainingProgram, Instructor, Resource, Testimonial, ShowcaseActivity, Project } from '@/types';
+import { Zap, CircuitBoard, Lightbulb, FileText, Download, Video, Star, Users, GraduationCap, BookOpen, MessageCircle, CalendarDays, DraftingCompass, Settings, SlidersHorizontal, Home, Annoyed, Briefcase } from 'lucide-react';
 
 export const instructors: Instructor[] = [
   { id: 'inst1', name: 'G Eng. Edgar K. MUTICHI', bio: 'Lead Electrical Engineer with experience in industrial automation and panel design.', imageUrl: 'https://ik.imagekit.io/arlpx2025/instructor_placeholder_100x100.png', dataAihint: 'engineer portrait', specialization: 'Industrial Automation' ,},
@@ -123,12 +123,26 @@ By following these tips, you can build electrical panels that are not only funct
     description: 'A step-by-step video tutorial on configuring a Variable Frequency Drive for motor control.',
     type: 'video',
     icon: Video,
-    downloadUrl: 'https://youtu.be/nL-VSw-r4DY',
-    content: 'This video tutorial provides a step-by-step guide to setting up a basic Variable Frequency Drive (VFD) for motor control. Follow along to understand the key parameters and configuration steps. Click the link to watch the full video on YouTube.',
+    downloadUrl: 'https://www.youtube.com/watch?v=nL-VSw-r4DY',
+    content: 'This video tutorial provides a step-by-step guide to setting up a basic Variable Frequency Drive (VFD) for motor control. Follow along to understand the key parameters and configuration steps.',
     category: 'Tutorials',
     publishedDate: '2025-04-21',
     imageUrl: 'https://ik.imagekit.io/arlpx2025/Basic%20VFD%20Setup.jpg?updatedAt=1750844492273',
     dataAihint: 'electrical component',
+  },
+  {
+    id: 'res4',
+    slug: 'video-3d-macros-eplan',
+    title: '3D Macros & Custom Parts in EPlan',
+    description: 'Learn how to create 3D macros and use graphical schematics for custom parts creation in EPlan Electric P8.',
+    type: 'video',
+    icon: Video,
+    downloadUrl: 'https://youtu.be/_DgOv0wERZk?si=5BecYOWEA_co_gfg',
+    content: 'This advanced tutorial covers the creation of 3D macros for panel layout and the process of generating custom parts from graphical schematics. A must-watch for experienced EPlan users looking to enhance their 3D panel design skills.',
+    category: 'Advanced Tutorials',
+    publishedDate: '2025-08-30',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/Cm12413dMacroCreationthumbnail.jpg?updatedAt=1753148099831',
+    dataAihint: '3d cad design',
   },
   //  {
   //   id: 'res4',
@@ -183,9 +197,18 @@ export const testimonials: Testimonial[] = [
 
 export const showcaseActivities: ShowcaseActivity[] = [
   {
+    id: 'sa-new-resource',
+    title: 'New Resource: 3D Macros in EPlan',
+    description: 'Check out our new advanced video tutorial on creating 3D macros and custom parts in EPlan Electric P8.',
+    imageUrl: 'https://ik.imagekit.io/arlpx2025/Cm12413dMacroCreationthumbnail.jpg?updatedAt=1753148099831',
+    dataAihint: '3d cad design',
+    category: 'New Resource',
+    link: '/resources/video-3d-macros-eplan',
+  },
+  {
     id: 'sa-attachment',
     title: 'Industrial Attachment Program',
-    description: 'A hands-on program where students experience the complete lifecycle of electrical panel creation, from initial design and manufacturing to final testing and commissioning.',
+    description: 'A hands-on program where students experience the complete lifecycle of electrical panel creation, from initial design and manufacturing, to final testing and commissioning.',
     imageUrl: 'https://ik.imagekit.io/arlpx2025/TAP%202025%20Intro.jpg?updatedAt=1750853523673',
     dataAihint: 'students workshop',
     category: 'Attachment Program',
@@ -220,6 +243,42 @@ export const showcaseActivities: ShowcaseActivity[] = [
   // },
 ];
 
+export const projects: Project[] = [
+    {
+      id: 'proj1',
+      title: 'Automation Control Panel for Water Treatment Plant',
+      slug: 'water-treatment-panel',
+      description: 'Designed and built a complete automation control panel for a major water treatment facility, improving efficiency and reliability of the plant\'s operations.',
+      imageUrl: 'https://ik.imagekit.io/arlpx2025/water-treatment-plant.jpg?updatedAt=1750893077708',
+      dataAihint: 'industrial machinery',
+      category: 'Completed Project',
+      date: 'Completed: June 2024',
+      tags: ['Automation', 'PLC', 'Water Treatment', 'Panel Building'],
+    },
+    {
+      id: 'proj2',
+      title: 'Community Training on Solar Energy',
+      slug: 'community-solar-training',
+      description: 'Conducted a free-to-attend community event on the basics of solar energy systems, empowering local residents with knowledge for sustainable power solutions.',
+      imageUrl: 'https://ik.imagekit.io/arlpx2025/community-solar-training.jpg?updatedAt=1750893077675',
+      dataAihint: 'community teaching',
+      category: 'Event',
+      date: 'Held: April 2024',
+      tags: ['Community', 'Solar Energy', 'Training', 'CSR'],
+    },
+    {
+      id: 'proj3',
+      title: 'LV Power Distribution for Commercial Complex',
+      slug: 'commercial-complex-power',
+      description: 'Engineered and commissioned the main Low Voltage (LV) power distribution boards for a new commercial shopping complex, ensuring safe and stable power for all tenants.',
+      imageUrl: 'https://ik.imagekit.io/arlpx2025/power-distribution.jpg?updatedAt=1750893077626',
+      dataAihint: 'electrical distribution',
+      category: 'Completed Project',
+      date: 'Completed: February 2024',
+      tags: ['Power Distribution', 'LV Systems', 'Commercial', 'Safety'],
+    },
+];
+
 
 export const navIcons = {
   Home,
@@ -234,4 +293,5 @@ export const navIcons = {
   Lightbulb,
   SlidersHorizontal,
   Annoyed,
+  Briefcase,
 };

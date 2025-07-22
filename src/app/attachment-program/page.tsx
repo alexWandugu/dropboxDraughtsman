@@ -28,6 +28,11 @@ const attachmentImages = [
     alt: 'Wiring components within a discrete control panel kit',
     hint: 'electrical wiring'
   },
+  {
+    src: 'https://ik.imagekit.io/arlpx2025/PLC%20based_croped.jpg?updatedAt=1753149576294',
+    alt: 'Transition to controller-based control panel kit',
+    hint: 'PLC wiring & Programming'
+  },
   // {
   //   src: 'https://placehold.co/800x600.png',
   //   alt: 'Testing a completed electrical panel with diagnostic tools',

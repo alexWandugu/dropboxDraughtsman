@@ -1,7 +1,6 @@
 
 import { firestore, collection, getDocs } from '@/lib/firebase';
-import { trainingPrograms as mockTrainingPrograms } from '@/data/mock-data';
-import { resources as mockResources } from '@/data/mock-data';
+import { trainingPrograms as mockTrainingPrograms, resources as mockResources, projects as mockProjects } from '@/data/mock-data';
 import type { MetadataRoute } from 'next';
 
 async function getTrainingProgramSlugs(): Promise<{ slug: string }[]> {
@@ -30,24 +29,21 @@ async function getResourceSlugs(): Promise<{ slug: string }[]> {
   return mockResources.map(r => ({ slug: r.slug }));
 }
 
+async function getProjectSlugs(): Promise<{ slug: string }[]> {
+    // For now, we will use mock data for projects.
+    // In the future, this can be updated to fetch from Firestore.
+    return mockProjects.map(p => ({ slug: p.slug }));
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // IMPORTANT: Set your production domain in your environment variables
-  // (e.g., in a .env.local file) as NEXT_PUBLIC_SITE_URL
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dropboxdraughtsman.vercel.app';
   const lastModified = new Date();
 
   const staticRoutes = [
     '/',
     '/about',
-    // '/attachment-program',
-    // '/consultation',
-    // '/guidance',
-    // '/login',
-    // '/privacy',
+    '/projects',
     '/resources',
-    // '/schedule',
-    // '/terms',
-    // '/testimonials',
     '/training',
   ].map(route => ({
     url: `${siteUrl}${route}`,
@@ -72,9 +68,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'monthly' as 'monthly',
   }));
 
+  const projectSlugs = await getProjectSlugs();
+  const projectRoutes = projectSlugs.map(({ slug }) => ({
+      url: `${siteUrl}/projects/${slug}`,
+      lastModified,
+      priority: 0.7, // Same as training programs
+      changeFrequency: 'monthly' as 'monthly',
+  }));
+
   return [
     ...staticRoutes,
     ...trainingProgramRoutes,
     ...resourceRoutes,
+    ...projectRoutes,
   ];
 }

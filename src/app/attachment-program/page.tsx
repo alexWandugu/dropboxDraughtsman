@@ -124,7 +124,7 @@ export default function AttachmentProgramPage() {
           Program Highlights so far
         </SectionTitle>
         <Carousel
-          opts={{ align: "start", loop: true, }}
+          opts={{ align: "start", loop: true }}
           plugins={[autoplayPlugin.current]}
           className="w-full max-w-4xl mx-auto"
         >

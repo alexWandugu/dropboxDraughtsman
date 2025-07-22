@@ -29,7 +29,7 @@ const attachmentImages = [
     hint: 'electrical wiring'
   },
   {
-    src: 'https://ik.imagekit.io/arlpx2025/PLC%20based_croped.jpg?updatedAt=1753149576294',
+    src: 'https://ik.imagekit.io/arlpx2025/PLC%20based_croped_16x9.jpg?updatedAt=1753163207543',
     alt: 'Transition to controller-based control panel kit',
     hint: 'PLC wiring & Programming'
   },

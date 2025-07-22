@@ -34,8 +34,8 @@ const attachmentImages = [
     hint: 'PLC wiring & Programming'
   },
   {
-    src: 'https://ik.imagekit.io/arlpx2025/Site-Visit-Highlight.jpg?updatedAt=1753167195748',
-    alt: 'Students on a site visit to an industrial facility',
+    src: 'https://ik.imagekit.io/arlpx2025/fieldVisit_ISA_2_cropped.jpg?updatedAt=1753214095440',
+    alt: 'Students on a site visit to ISA Automation Ltd',
     hint: 'industrial site visit'
   },
 ];
@@ -47,7 +47,8 @@ const keyLearnings = [
     "Assembly and wiring techniques based on IEC standards",
     "Quality control and inspection protocols",
     "Functional testing and troubleshooting",
-    "Professional documentation and reporting"
+    "Professional documentation and reporting",
+    "Industrial Site Visit"
 ];
 
 export default function AttachmentProgramPage() {
@@ -168,7 +169,7 @@ export default function AttachmentProgramPage() {
               ))}
             </ul>
         </div>
-      </SectionContainer>
+      </sectionContainer>
 
       <SectionContainer className="bg-primary/10">
          <div className="text-center">

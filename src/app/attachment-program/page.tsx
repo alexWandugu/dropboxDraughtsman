@@ -169,7 +169,7 @@ export default function AttachmentProgramPage() {
               ))}
             </ul>
         </div>
-      </sectionContainer>
+      </SectionContainer>
 
       <SectionContainer className="bg-primary/10">
          <div className="text-center">

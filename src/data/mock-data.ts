@@ -140,7 +140,7 @@ By following these tips, you can build electrical panels that are not only funct
     downloadUrl: 'https://youtu.be/_DgOv0wERZk?si=5BecYOWEA_co_gfg',
     content: 'This advanced tutorial covers the creation of 3D macros for panel layout and the process of generating custom parts from graphical schematics. A must-watch for experienced EPlan users looking to enhance their 3D panel design skills.',
     category: 'Advanced Tutorials',
-    publishedDate: '2025-08-30',
+    publishedDate: '2025-07-21',
     imageUrl: 'https://ik.imagekit.io/arlpx2025/Cm12413dMacroCreationthumbnail.jpg?updatedAt=1753148099831',
     dataAihint: '3d cad design',
   },

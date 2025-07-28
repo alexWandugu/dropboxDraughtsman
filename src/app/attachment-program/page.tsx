@@ -120,8 +120,8 @@ export default function AttachmentProgramPage() {
       </SectionContainer>
 
       <SectionContainer className="bg-muted/40">
-        <SectionTitle subtitle="What they are Experiencing">
-          Program Highlights so far
+        <SectionTitle subtitle="Our previous cohort">
+          Program Highlights
         </SectionTitle>
         <Carousel
           opts={{ align: "start", loop: true }}

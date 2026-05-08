@@ -1,5 +1,7 @@
-# Firebase Studio
+# Dropbox Draughtsman Design
 
-This is a NextJS starter in Firebase Studio.
+To engage the business visit https://dropboxdraughtsman.vercel.app/
 
-To get started, take a look at src/app/page.tsx.
+
+This is a NextJS project.
+To get started on building with nextjs, visit https://nextjs.org/
